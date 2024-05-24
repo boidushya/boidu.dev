@@ -3,7 +3,6 @@ import React from "react";
 import { useResizeObserver } from "../../hooks";
 import {
   IViewModeContext,
-  VIEW_MODES,
   ViewModeContext,
   ViewModeProvider,
 } from "../../contexts/ViewContext";
