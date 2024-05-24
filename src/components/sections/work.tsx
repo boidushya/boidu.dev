@@ -4,7 +4,7 @@ const containerVariants = {
   initial: {},
   animate: {
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.125,
     },
   },
 };

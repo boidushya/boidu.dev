@@ -351,10 +351,6 @@ img.bg {
     transform: scale(1.5);
   }
 
-  ol#songs > li .song-info {
-    width: calc(var(--yt-thumb-dim) - 1rem);
-  }
-
   ol#songs > li .thumb-container > img {
     height: 192px;
     width: 192px;
