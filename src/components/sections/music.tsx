@@ -93,8 +93,8 @@ const MusicSection = () => {
         id="songs"
         className="mt-4"
       >
-        {isLoading && <p>Loading...</p>}
-        {isError && <p>{error.message}</p>}
+        {isLoading && <p className="animate-pulse">Loading...</p>}
+        {isError && <p className="text-red-400">{error.message}</p>}
         {data &&
           data?.map((item: any) => (
             <Song
