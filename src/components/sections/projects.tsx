@@ -130,12 +130,12 @@ const PROJECT_ITEMS = [
 
 const ProjectItem = ({
   title,
-  description,
+  //   description,
   link,
   image,
 }: {
   title: string;
-  description: string;
+  //   description: string;
   link: string;
   image: string;
 }) => {
@@ -217,75 +217,75 @@ const ProjectItem = ({
   );
 };
 
-const ViewChanger = () => {
-  const { activeViewMode, setActiveViewMode } = React.useContext(
-    ViewModeContext
-  ) as IViewModeContext;
+// const ViewChanger = () => {
+//   const { activeViewMode, setActiveViewMode } = React.useContext(
+//     ViewModeContext
+//   ) as IViewModeContext;
 
-  return (
-    <div className="flex items-center overflow-hidden text-sm rounded-lg bg-black/[0.175] p-1">
-      {VIEW_MODES.map((mode) => (
-        <button
-          key={mode}
-          onClick={() => setActiveViewMode(mode)}
-          className={`p-2 ${
-            activeViewMode === mode
-              ? "cursor-default bg-white/[0.05] transition-all rounded"
-              : ""
-          }`}
-        >
-          {mode === "list" && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"
-              />
-            </svg>
-          )}
-          {mode === "grid" && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              className="size-4"
-              strokeWidth={1.75}
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
-              />
-            </svg>
-          )}
-          {mode === "icon" && (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.75}
-              stroke="currentColor"
-              className="size-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
-              />
-            </svg>
-          )}
-        </button>
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="flex items-center overflow-hidden text-sm rounded-lg bg-black/[0.175] p-1">
+//       {VIEW_MODES.map((mode) => (
+//         <button
+//           key={mode}
+//           onClick={() => setActiveViewMode(mode)}
+//           className={`p-2 ${
+//             activeViewMode === mode
+//               ? "cursor-default bg-white/[0.05] transition-all rounded"
+//               : ""
+//           }`}
+//         >
+//           {mode === "list" && (
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               fill="none"
+//               viewBox="0 0 24 24"
+//               strokeWidth={1.5}
+//               stroke="currentColor"
+//               className="size-4"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z"
+//               />
+//             </svg>
+//           )}
+//           {mode === "grid" && (
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               viewBox="0 0 24 24"
+//               className="size-4"
+//               strokeWidth={1.75}
+//               stroke="currentColor"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"
+//               />
+//             </svg>
+//           )}
+//           {mode === "icon" && (
+//             <svg
+//               xmlns="http://www.w3.org/2000/svg"
+//               fill="none"
+//               viewBox="0 0 24 24"
+//               strokeWidth={1.75}
+//               stroke="currentColor"
+//               className="size-4"
+//             >
+//               <path
+//                 strokeLinecap="round"
+//                 strokeLinejoin="round"
+//                 d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+//               />
+//             </svg>
+//           )}
+//         </button>
+//       ))}
+//     </div>
+//   );
+// };
 
 const ProjectsSection = () => {
   return (
@@ -305,7 +305,7 @@ const ProjectsSection = () => {
             <ProjectItem
               key={index}
               title={item.title}
-              description={item.description}
+              //   description={item.description}
               link={item.link}
               image={item.image}
             />
