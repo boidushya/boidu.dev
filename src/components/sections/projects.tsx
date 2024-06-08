@@ -65,6 +65,13 @@ const PROJECT_ITEMS = [
     image: "https://avatars.githubusercontent.com/u/37784886?s=200&v=4",
   },
   {
+    title: "Better Lyrics",
+    description: "Youtube music lyrics on steroids.",
+    link: "https://github.com/boidushya/better-lyrics",
+    image:
+      "https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
+  },
+  {
     title: "Rang - The Color Accuracy Game",
     description:
       "The preface is pretty simple, you need to match the target color in the shortest possible time. Give it a try, I've been told it's quite addictive!",
