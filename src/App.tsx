@@ -8,6 +8,7 @@ import ProjectsSection from "./components/sections/projects";
 import WorkSection from "./components/sections/work";
 import { AnimatePresence, motion } from "framer-motion";
 import { ITabContext, TabContext, TDirection } from "./contexts/TabContext";
+import Banner from "./components/sections/banner";
 
 const variants = {
   initial: (direction: TDirection) => ({
@@ -55,6 +56,7 @@ const App = () => {
             {activeTab === "contact" && <ContactSection key="contact" />}
           </motion.section>
         </AnimatePresence>
+        <Banner />
       </main>
     </>
   );
