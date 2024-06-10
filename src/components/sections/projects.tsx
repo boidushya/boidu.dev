@@ -58,18 +58,18 @@ const PROJECT_ITEMS = [
     image: "https://eip6963.org/favicon.ico",
   },
   {
+    title: "Better Lyrics",
+    description: "Youtube music lyrics on steroids.",
+    link: "https://better-lyrics.boidu.dev/",
+    image:
+      "https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
+  },
+  {
     title: "WalletConnect Docs",
     description:
       "Documentation for WalletConnect SDKs. I was responsible for the 2023 docs refactor.",
     link: "https://docs.walletconnect.com",
     image: "https://avatars.githubusercontent.com/u/37784886?s=200&v=4",
-  },
-  {
-    title: "Better Lyrics",
-    description: "Youtube music lyrics on steroids.",
-    link: "https://github.com/boidushya/better-lyrics",
-    image:
-      "https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
   },
   {
     title: "Rang - The Color Accuracy Game",
