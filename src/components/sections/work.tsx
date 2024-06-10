@@ -27,8 +27,8 @@ const WorkSection = () => {
     <>
       <h3>
         I'm currently working at{" "}
-        <a href="https://walletconnect.com" target="_blank" rel="noreferrer">
-          WalletConnect
+        <a href="https://campnetwork.xyz" target="_blank" rel="noreferrer">
+          Camp Network
         </a>
       </h3>
       <motion.div
@@ -39,11 +39,41 @@ const WorkSection = () => {
         <motion.p variants={itemVariants} className="work-title">
           <img
             className="work-logo"
+            src="https://pbs.twimg.com/profile_images/1774932612160557056/QOyzwbO2_400x400.jpg"
+            alt="WalletConnect"
+          />
+          <span>
+            I'm currently working as Frontend Lead for{" "}
+            <a
+              href="https://www.campnetwork.xyz/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Camp Network
+            </a>
+            . My day-to-day involves curating frontend architectures for various
+            projects/dapps under the Camp Network umbrella.
+            <br /> I am also responsible for building{" "}
+            <a
+              href="https://camp-ui-kit.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Camp's UI kit
+            </a>{" "}
+            and ensuring that the design system is consistent across all
+            projects.
+          </span>
+        </motion.p>
+        <br />
+        <motion.p variants={itemVariants} className="work-title">
+          <img
+            className="work-logo"
             src="https://avatars.githubusercontent.com/u/37784886?s=200&v=4"
             alt="WalletConnect"
           />
           <span>
-            I'm a Developer Relations Engineer at{" "}
+            I used to be a Developer Relations Engineer at{" "}
             <a
               href="https://walletconnect.com"
               target="_blank"
@@ -51,8 +81,9 @@ const WorkSection = () => {
             >
               WalletConnect
             </a>
-            . I work on developer education, documentation, and community
-            engagement. I also help developers build dapps using WalletConnect.
+            . I worked on developer education, documentation, and community
+            engagement. I also helped developers build dapps using
+            WalletConnect.
           </span>
         </motion.p>
         <br />
