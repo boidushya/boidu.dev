@@ -43,7 +43,7 @@ const WorkSection = () => {
             alt="WalletConnect"
           />
           <span>
-            I'm currently working as Frontend Lead for{" "}
+            I'm currently working as a Frontend Lead for{" "}
             <a
               href="https://www.campnetwork.xyz/"
               target="_blank"
