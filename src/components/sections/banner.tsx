@@ -50,7 +50,7 @@ const Banner = () => {
           <div className="flex items-center gap-2">
             <a
               className="flex items-center gap-2 px-3 py-2 pr-4 mt-4 text-xs bg-indigo-900 rounded-lg hover:bg-indigo-800 text-indigo-50 w-fit hover:no-underline"
-              href="https://github.com/boidushya/better-lyrics"
+              href="https://better-lyrics.boidu.dev/"
               target="_blank"
               rel="noreferrer"
               onClick={handleClose}
