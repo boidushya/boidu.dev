@@ -7,32 +7,35 @@ import MusicSection from "./components/sections/music";
 import ProjectsSection from "./components/sections/projects";
 import WorkSection from "./components/sections/work";
 import { AnimatePresence, motion } from "framer-motion";
-import { ITabContext, TabContext, TDirection } from "./contexts/TabContext";
+import { ITabContext, TabContext } from "./contexts/TabContext";
 import Banner from "./components/sections/banner";
 
 const variants = {
-  initial: (direction: TDirection) => ({
+  initial: {
     opacity: 0.25,
-    x: direction === "forward" ? 24 : -24,
+    y: 24,
+    scale: 1.05,
     filter: "blur(3px)",
-  }),
+  },
   animate: {
     opacity: 1,
-    x: 0,
+    y: 0,
+    scale: 1,
     filter: "blur(0px)",
   },
-  exit: (direction: TDirection) => ({
+  exit: {
     opacity: 0.25,
-    x: direction === "forward" ? -24 : 24,
+    y: 24,
     filter: "blur(3px)",
+    scale: 0.95,
     transition: {
-      duration: 0.075,
+      duration: 0.1,
     },
-  }),
+  },
 };
 
 const App = () => {
-  const { activeTab, direction } = React.useContext(TabContext) as ITabContext;
+  const { activeTab } = React.useContext(TabContext) as ITabContext;
 
   return (
     <>
@@ -40,10 +43,9 @@ const App = () => {
       <HeroWrapper />
       <Nav />
       <main className="pb-24">
-        <AnimatePresence mode="popLayout" initial={false}>
+        <AnimatePresence mode="wait" initial={false}>
           <motion.section
             key={activeTab}
-            custom={direction}
             variants={variants}
             initial="initial"
             animate="animate"

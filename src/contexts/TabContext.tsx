@@ -9,8 +9,6 @@ export type TDirection = "forward" | "backward";
 export interface ITabContext {
   activeTab: TTab;
   setActiveTab: React.Dispatch<React.SetStateAction<TTab>>;
-  direction: TDirection;
-  setDirection: React.Dispatch<React.SetStateAction<TDirection>>;
 }
 
 export const TabContext = React.createContext<ITabContext | null>(null);
@@ -20,7 +18,6 @@ export const TabProvider = ({ children }: { children: React.ReactNode }) => {
   const url = new URL(window.location.href);
   const tab = url.searchParams.get("tab") as TTab;
   const [activeTab, setActiveTab] = React.useState<TTab>(tab || "projects");
-  const [direction, setDirection] = React.useState<TDirection>("forward");
 
   React.useEffect(() => {
     const url = new URL(window.location.href);
@@ -29,9 +26,7 @@ export const TabProvider = ({ children }: { children: React.ReactNode }) => {
   }, [activeTab]);
 
   return (
-    <TabContext.Provider
-      value={{ activeTab, setActiveTab, direction, setDirection }}
-    >
+    <TabContext.Provider value={{ activeTab, setActiveTab }}>
       {children}
     </TabContext.Provider>
   );

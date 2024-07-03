@@ -52,17 +52,23 @@ const hoverVariants = {
 
 const PROJECT_ITEMS = [
   {
+    title: "Better Lyrics",
+    description: "Youtube music lyrics on steroids.",
+    link: "https://better-lyrics.boidu.dev/",
+    image:
+      "https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
+  },
+  {
     title: "EIP-6963",
     description: "A playground for testing EIP-6963",
     link: "https://eip6963.org",
     image: "https://eip6963.org/favicon.ico",
   },
   {
-    title: "Better Lyrics",
-    description: "Youtube music lyrics on steroids.",
-    link: "https://better-lyrics.boidu.dev/",
-    image:
-      "https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
+    title: "Blog",
+    description: "A place for my thoughts and experiences",
+    link: "https://blog.boidu.dev",
+    image: "https://blog.boidu.dev/favicon.ico",
   },
   {
     title: "WalletConnect Docs",
@@ -123,7 +129,7 @@ const PROJECT_ITEMS = [
     description:
       "India's largest chain agnostic web3 conference. Apart from being an organizer, I also made the website for this.",
     link: "https://web3confindia.xyz/",
-    image: "https://www.web3confindia.xyz/circle.png",
+    image: "https://www.web3confindia.xyz/square.png",
   },
   {
     title: "Vinyl",
