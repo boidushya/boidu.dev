@@ -57,19 +57,31 @@ const PROJECT_ITEMS = [
     link: "https://better-lyrics.boidu.dev/",
     image:
       "https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
-  },
+	},
   {
-    title: "EIP-6963",
+		title: "EIP-6963",
     description: "A playground for testing EIP-6963",
     link: "https://eip6963.org",
     image: "https://eip6963.org/favicon.ico",
   },
   {
-    title: "Blog",
+		title: "Blog",
     description: "A place for my thoughts and experiences",
     link: "https://blog.boidu.dev",
     image: "https://blog.boidu.dev/favicon.ico",
   },
+	{
+		title: "Camp UI Kit",
+		description: "A collection of React components for building Camp Network dapps",
+		link: "https://camp-ui-kit.vercel.app",
+		image: "https://pbs.twimg.com/profile_images/1774932612160557056/QOyzwbO2_400x400.jpg",
+	},
+	{
+		title: "Camp SDK",
+		description: "A simple SDK for authenticating users with Camp Network",
+		link: "https://github.com/campaign-layer/camp-sdk",
+		image: "https://pbs.twimg.com/profile_images/1774932612160557056/QOyzwbO2_400x400.jpg",
+	},
   {
     title: "WalletConnect Docs",
     description:
@@ -140,6 +152,10 @@ const PROJECT_ITEMS = [
   },
 ];
 
+const FallbackIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 12"><path fill="currentColor" d="M6 9.5A1.5 1.5 0 0 0 7.5 11h2A1.5 1.5 0 0 0 11 9.5v-3A1.5 1.5 0 0 0 9.5 5h-2A1.5 1.5 0 0 0 6 6.5zm-5-4A1.5 1.5 0 0 0 2.5 7h1A1.5 1.5 0 0 0 5 5.5v-3A1.5 1.5 0 0 0 3.5 1h-1A1.5 1.5 0 0 0 1 2.5zM7.5 4a1.5 1.5 0 1 1 0-3h2a1.5 1.5 0 0 1 0 3zM1 9.5A1.5 1.5 0 0 0 2.5 11h1a1.5 1.5 0 0 0 0-3h-1A1.5 1.5 0 0 0 1 9.5"></path></svg>
+  );
+
 const ProjectItem = ({
   title,
   //   description,
@@ -152,6 +168,8 @@ const ProjectItem = ({
   image: string;
 }) => {
   const ref = React.useRef<HTMLLIElement>(null);
+
+	const [imageError, setImageError] = React.useState(false);
 
   const onResize = React.useCallback(
     (target: HTMLLIElement) => {
@@ -175,7 +193,7 @@ const ProjectItem = ({
   return (
     <motion.li
       variants={itemVariants}
-      className={"w-fit transition-[height] transition-[width] relative"}
+      className={"w-fit transition-[height] relative"}
       ref={ref}
     >
       <div className="project-content group text-nowrap w-fit" ref={contentRef}>
@@ -190,7 +208,16 @@ const ProjectItem = ({
                 className="!mb-0"
                 key="list"
               >
-                <img className="flex-shrink-0 " src={image} alt={title} />
+                {imageError ? (
+                  <FallbackIcon />
+                ) : (
+										<img
+                    className="flex-shrink-0"
+                    src={image}
+                    alt={title}
+                    onError={() => setImageError(true)}
+                  />
+                )}
                 {title}
               </motion.h4>
             )}
