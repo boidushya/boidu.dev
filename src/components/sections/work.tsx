@@ -25,7 +25,8 @@ const itemVariants = {
 
 const WORK_ITEMS = [
   {
-    logo: "https://pbs.twimg.com/profile_images/1828904295908970496/8ntwuIGn_400x400.jpg",
+    logo: "https://pbs.twimg.com/profile_images/1948758995100938240/kSWf3cNk_400x400.jpg",
+	  
 		alt: "Junction",
 		link: "https://junction.exchange",
     content: (
