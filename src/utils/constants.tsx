@@ -1,5 +1,20 @@
 import Rang from "@/components/projects/rang";
 import BetterLyrics from "../components/projects/better-lyrics";
+import EIP6963 from "../components/projects/eip-6963";
+import Blog from "../components/projects/blog";
+import CampUIKit from "../components/projects/camp-ui-kit";
+import CampSDK from "../components/projects/camp-sdk";
+import WalletConnectDocs from "../components/projects/walletconnect-docs";
+import DopeUI from "../components/projects/dope-ui";
+import SquidApp from "../components/projects/sqwid-app";
+import Rezonance from "../components/projects/rezonance";
+import PortfolioWebsite from "../components/projects/portfolio-website";
+import CreateReefDapp from "../components/projects/create-reef-dapp";
+import TomJerry from "../components/projects/tom-jerry";
+import Web3ConfIndia from "../components/projects/web3conf-india";
+import Vinyl from "../components/projects/vinyl";
+import ReefWallet from "../components/projects/reef-wallet";
+import ReefExplorer from "../components/projects/reef-explorer";
 import type { ProjectItem } from "./projects";
 
 export const PROJECT_ITEMS: ProjectItem[] = [
@@ -27,6 +42,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "A playground for testing EIP-6963",
 		link: "https://eip6963.org",
 		image: "https://eip6963.org/favicon.ico",
+		component: EIP6963,
 	},
 	{
 		id: "blog",
@@ -34,6 +50,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "A place for my thoughts and experiences",
 		link: "https://blog.boidu.dev",
 		image: "https://blog.boidu.dev/favicon.ico",
+		component: Blog,
 	},
 	{
 		id: "camp-ui-kit",
@@ -43,6 +60,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		link: "https://camp-ui-kit.vercel.app",
 		image:
 			"https://pbs.twimg.com/profile_images/1774932612160557056/QOyzwbO2_400x400.jpg",
+		component: CampUIKit,
 	},
 	{
 		id: "camp-sdk",
@@ -51,6 +69,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		link: "https://github.com/campaign-layer/camp-sdk",
 		image:
 			"https://pbs.twimg.com/profile_images/1774932612160557056/QOyzwbO2_400x400.jpg",
+		component: CampSDK,
 	},
 	{
 		id: "walletconnect-docs",
@@ -59,6 +78,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"Documentation for WalletConnect SDKs. I was responsible for the 2023 docs refactor.",
 		link: "https://docs.walletconnect.com",
 		image: "https://avatars.githubusercontent.com/u/37784886?s=200&v=4",
+		component: WalletConnectDocs,
 	},
 	{
 		id: "dope-ui",
@@ -66,6 +86,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "A UI-Kit for creating neo-modern glassmorphic websites",
 		link: "https://dope.boidushya.com",
 		image: "https://dope.boidushya.com/logo-white.svg",
+		component: DopeUI,
 	},
 	{
 		id: "sqwid-app",
@@ -74,6 +95,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"Sqwid is an NFT marketplace running on the Reef chain that features per-item customizable royalties.",
 		link: "https://www.sqwid.app",
 		image: "https://www.sqwid.app/favicon.ico",
+		component: SquidApp,
 	},
 	{
 		id: "rezonance",
@@ -82,6 +104,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"Rezonance lets you play your favorite songs in high quality without getting interrupted by ads",
 		link: "https://listen.rezonance.in/",
 		image: "https://rezonance.in/favicon.png",
+		component: Rezonance,
 	},
 	{
 		id: "portfolio-website",
@@ -90,6 +113,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"My very own portfolio website (haha not this one). The terminal system is built without using any third party modules",
 		link: "https://boidushya.com",
 		image: "https://www.boidushya.com/assets/favicon/logo.png",
+		component: PortfolioWebsite,
 	},
 	{
 		id: "create-reef-dapp",
@@ -97,6 +121,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "Starter kit/ Boilerplate for bootstrapping a React Reef Dapp",
 		link: "https://github.com/boidushya/create-reef-dapp",
 		image: "https://reef.io/favicons/apple-touch-icon.png",
+		component: CreateReefDapp,
 	},
 	{
 		id: "tom-jerry",
@@ -105,6 +130,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"A facebook bot that posted Tom and Jerry frames one at a time.",
 		link: "https://www.facebook.com/etjfo/",
 		image: "https://www.facebook.com/images/fb_icon_325x325.png",
+		component: TomJerry,
 	},
 	{
 		id: "web3conf-india",
@@ -113,6 +139,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"India's largest chain agnostic web3 conference. Apart from being an organizer, I also made the website for this.",
 		link: "https://web3confindia.xyz/",
 		image: "https://www.web3confindia.xyz/square.png",
+		component: Web3ConfIndia,
 	},
 	{
 		id: "vinyl",
@@ -121,6 +148,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"A music-based hangman. Runners up of AWS Amplify x Hashnode Hackathon",
 		link: "https://vinyl-client.vercel.app/",
 		image: "https://vinyl-client.vercel.app/favicon.ico",
+		component: Vinyl,
 	},
 	{
 		id: "reef-wallet",
@@ -128,6 +156,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "A wallet for the Reef chain",
 		link: "https://reefwallet.boidu.dev",
 		image: "https://reefwallet.boidu.dev/favicon.ico",
+		component: ReefWallet,
 	},
 	{
 		id: "reef-explorer",
@@ -135,6 +164,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "A block explorer for the Reef chain",
 		link: "https://explorer.reefscan.com",
 		image: "https://explorer.reefscan.com/favicon.ico",
+		component: ReefExplorer,
 	},
 ];
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import { getRandomColor, hslToHex, manipulateColor } from "./functions";
 
 interface ColorAnimationState {
@@ -243,3 +243,31 @@ export const useLyricsAnimation = (lyrics: string[]): LyricsAnimationState => {
 		canvasRef,
 	};
 };
+
+export function useResizeObserver<T extends HTMLElement>(
+	callback: (target: T, entry: ResizeObserverEntry) => void,
+) {
+	const ref = useRef<T>(null);
+
+	// biome-ignore lint/correctness/useExhaustiveDependencies: The element being observed is the ref itself.
+	useLayoutEffect(() => {
+		const element = ref.current;
+
+		if (!element) {
+			return;
+		}
+
+		const observer = new ResizeObserver((entries) => {
+			callback(element, entries[0]);
+		});
+
+		observer.observe(element);
+
+		// eslint-disable-next-line consistent-return
+		return () => {
+			observer.disconnect();
+		};
+	}, [callback, ref]);
+
+	return ref;
+}

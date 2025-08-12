@@ -397,3 +397,19 @@ img.bg {
 	background-size: 48px 48px;
 	background-position: -22px -22px;
 }
+
+.eip-bg {
+	background:
+		linear-gradient(90deg, rgba(24, 24, 27, 1) 35px, transparent 1%) center,
+		linear-gradient(rgba(24, 24, 27, 1) 35px, transparent 1%) center,
+		rgb(99, 102, 241);
+	background-size: 36px 36px;
+}
+
+.blog-bg {
+	background: linear-gradient(
+		to top right,
+		rgba(255, 0, 0, 0.1) 0%,
+		rgba(255, 0, 238, 0.1) 100%
+	);
+}
