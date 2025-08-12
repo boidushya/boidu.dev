@@ -14,7 +14,7 @@ const Rang = () => {
 
 	return (
 		<div
-			className="absolute inset-0 overflow-hidden transition-colors duration-500 rang-bg"
+			className="absolute inset-0 transition-colors duration-500 rang-bg"
 			style={{
 				backgroundColor: convertHSLValuesToString(
 					backgroundOffset.h,

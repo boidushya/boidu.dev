@@ -16,8 +16,8 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		id: "rang",
 		title: "Rang - The Color Accuracy Game",
 		description:
-			"The preface is pretty simple, you need to match the target color in the shortest possible time. Give it a try, I've been told it's quite addictive!",
-		link: "https://rang.boidushya.com",
+			"Match the target color as fast as you can. Give it a try, I've been told it's quite addictive!",
+		link: "https://rang.boidu.dev",
 		image: "https://rang.boidushya.com/favicon.ico",
 		component: Rang,
 	},

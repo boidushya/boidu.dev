@@ -58,7 +58,6 @@ export const BentoProjectCard = ({
 
 			<div className="absolute inset-0 overflow-hidden bento-content-mask rounded-xl" />
 
-			{/* Project Info */}
 			<div className="absolute bottom-0 left-0 right-0 z-20 p-4 overflow-hidden rounded-xl">
 				<AnimatePresence mode="popLayout">
 					<motion.div

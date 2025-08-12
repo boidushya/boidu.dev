@@ -106,11 +106,7 @@ const BetterLyrics = () => {
 
 	return (
 		<div className="absolute inset-0 bg-gradient-to-br from-purple-950/30 to-pink-950/30 ">
-			<canvas
-				ref={canvasRef}
-				className="absolute inset-0 w-full h-full "
-				style={{ zIndex: 0 }}
-			/>
+			<canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full" />
 			<div className="relative z-10 h-full p-4 overflow-hidden">
 				<div ref={containerRef}>
 					{LYRICS.map((line, lineIndex) => renderLine(line, lineIndex))}
