@@ -88,7 +88,7 @@ const EIP6963 = () => {
 	return (
 		<div className="absolute inset-0 z-0 grid place-items-center eip-bg">
 			<motion.button
-				className="relative flex items-center gap-2 p-2 mb-8 overflow-hidden text-xs font-semibold text-white bg-indigo-600 rounded-xl"
+				className="relative flex items-center gap-2 p-2 mb-6 overflow-hidden text-xs font-semibold text-white bg-indigo-600 rounded-xl"
 				animate={{ width }}
 				transition={{ type: "spring", stiffness: 200, damping: 20 }}
 				style={{ width }}

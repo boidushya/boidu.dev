@@ -4,7 +4,7 @@ const Blog = () => {
 	return (
 		<div className="absolute inset-0 z-0 grid place-items-center blog-bg">
 			<motion.button
-				className="grid pb-[5px] px-[6px] pt-[6px] border border-white/10 bg-red-500 rounded-full place-items-center mb-8"
+				className="grid pb-[5px] px-[6px] pt-[6px] border border-white/10 bg-red-500 rounded-full place-items-center mb-6"
 				initial={{ scale: 1 }}
 				animate={{
 					scale: [1, 1.2, 0.9, 1.05, 1],

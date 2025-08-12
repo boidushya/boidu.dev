@@ -46,4 +46,4 @@ export const BENTO_LAYOUT: Record<string, BentoSize> =
 
 // Responsive grid classes for the container
 export const BENTO_GRID_CLASSES =
-	"grid auto-rows-[128px] gap-4 grid-cols-1 grid-cols-4";
+	"grid auto-rows-[128px] gap-4 sm:grid-cols-4 grid-cols-1";

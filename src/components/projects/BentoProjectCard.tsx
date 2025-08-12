@@ -13,12 +13,12 @@ interface BentoProjectCardProps extends Omit<ProjectItem, "component"> {
 }
 
 const sizeClasses = {
-	small: "col-span-1 row-span-1",
-	medium: "col-span-2 row-span-2",
-	large: "col-span-4 row-span-2",
-	wide: "col-span-4 row-span-1",
-	smallWide: "col-span-2 row-span-1",
-	tall: "col-span-1 row-span-1",
+	small: "sm:col-span-1 row-span-1 ",
+	medium: "sm:col-span-2 row-span-2",
+	large: "sm:col-span-4 row-span-2",
+	wide: "sm:col-span-4 row-span-1",
+	smallWide: "sm:col-span-2 row-span-1",
+	tall: "sm:col-span-1 row-span-1",
 };
 
 export const BentoProjectCard = ({
