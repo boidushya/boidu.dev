@@ -1,20 +1,20 @@
 import Rang from "@/components/projects/rang";
 import BetterLyrics from "../components/projects/better-lyrics";
-import EIP6963 from "../components/projects/eip-6963";
 import Blog from "../components/projects/blog";
-import CampUIKit from "../components/projects/camp-ui-kit";
 import CampSDK from "../components/projects/camp-sdk";
-import WalletConnectDocs from "../components/projects/walletconnect-docs";
-import DopeUI from "../components/projects/dope-ui";
-import SquidApp from "../components/projects/sqwid-app";
-import Rezonance from "../components/projects/rezonance";
-import PortfolioWebsite from "../components/projects/portfolio-website";
+import CampUIKit from "../components/projects/camp-ui-kit";
 import CreateReefDapp from "../components/projects/create-reef-dapp";
-import TomJerry from "../components/projects/tom-jerry";
-import Web3ConfIndia from "../components/projects/web3conf-india";
-import Vinyl from "../components/projects/vinyl";
-import ReefWallet from "../components/projects/reef-wallet";
+import DopeUI from "../components/projects/dope-ui";
+import EIP6963 from "../components/projects/eip-6963";
+import PortfolioWebsite from "../components/projects/portfolio-website";
 import ReefExplorer from "../components/projects/reef-explorer";
+import ReefWallet from "../components/projects/reef-wallet";
+import Rezonance from "../components/projects/rezonance";
+import SquidApp from "../components/projects/sqwid-app";
+import TomJerry from "../components/projects/tom-jerry";
+import Vinyl from "../components/projects/vinyl";
+import WalletConnectDocs from "../components/projects/walletconnect-docs";
+import Web3ConfIndia from "../components/projects/web3conf-india";
 import type { ProjectItem } from "./projects";
 
 export const PROJECT_ITEMS: ProjectItem[] = [
@@ -162,8 +162,8 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		id: "reef-explorer",
 		title: "Reef Explorer",
 		description: "A block explorer for the Reef chain",
-		link: "https://explorer.reefscan.com",
-		image: "https://explorer.reefscan.com/favicon.ico",
+		link: "https://reefscan.com/",
+		image: "https://reef.io/favicons/apple-touch-icon.png",
 		component: ReefExplorer,
 	},
 ];
