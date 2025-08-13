@@ -16,10 +16,10 @@ const Vinyl = () => {
 					<img
 						src="/flwogb.jpeg"
 						alt="Album Art"
-						className="relative z-10 object-cover w-6 h-6 rounded-full outline outline-zinc-600"
+						className="relative z-10 object-cover w-6 h-6 rounded-full outline outline-zinc-800"
 					/>
 				</div>
-				<div className="absolute z-20 w-2 h-2 transform -translate-x-1/2 -translate-y-1/2 border rounded-full bg-zinc-900 top-1/2 left-1/2 border-zinc-600"></div>
+				<div className="absolute z-20 w-2 h-2 transform -translate-x-1/2 -translate-y-1/2 border rounded-full bg-zinc-900 top-1/2 left-1/2 border-zinc-800"></div>
 			</div>
 		</div>
 	);
