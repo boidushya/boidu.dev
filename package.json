@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@million/lint": "latest",
+    "@number-flow/react": "^0.5.10",
     "@tanstack/react-query": "^5.37.1",
     "framer-motion": "^11.2.6",
     "million": "latest",
