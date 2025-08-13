@@ -1,9 +1,8 @@
 const Vinyl = () => {
 	return (
-		<div className="absolute inset-0 z-0 grid place-items-center bg-gradient-to-br from-red-900 via-pink-900 to-orange-900">
+		<div className="absolute inset-0 z-0 grid place-items-center bg-gradient-to-br from-pink-900 via-orange-900 to-red-900">
 			<div className="relative w-24 h-24 overflow-hidden rounded-full shadow-2xl bg-zinc-950 animate-spin-slow">
 				<div className="grid w-full h-full border-2 rounded-full border-zinc-800 place-items-center">
-					{/* Vinyl grooves */}
 					<div className="absolute border rounded-full inset-1 border-zinc-600/30 opacity-30"></div>
 					<div className="absolute border rounded-full inset-2 border-zinc-600/30 opacity-30"></div>
 					<div className="absolute border rounded-full inset-3 border-zinc-600/30 opacity-30"></div>
