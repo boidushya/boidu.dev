@@ -77,7 +77,7 @@ const CampSDK = () => {
 						<motion.svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 24 24"
-							className="text-[#2D929E] size-12"
+							className="text-[#2D929E] size-14"
 						>
 							<motion.path
 								fill="none"
