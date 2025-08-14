@@ -1,20 +1,20 @@
+import BetterLyrics from "@/components/projects/better-lyrics";
+import Blog from "@/components/projects/blog";
+import CampSDK from "@/components/projects/camp-sdk";
+import CampUIKit from "@/components/projects/camp-ui-kit";
+import CreateReefDapp from "@/components/projects/create-reef-dapp";
+import DopeUI from "@/components/projects/dope-ui";
+import EIP6963 from "@/components/projects/eip-6963";
+import FlowHackathon from "@/components/projects/flow-hackathon";
+import PortfolioWebsite from "@/components/projects/portfolio-website";
 import Rang from "@/components/projects/rang";
-import BetterLyrics from "../components/projects/better-lyrics";
-import Blog from "../components/projects/blog";
-import CampSDK from "../components/projects/camp-sdk";
-import CampUIKit from "../components/projects/camp-ui-kit";
-import CreateReefDapp from "../components/projects/create-reef-dapp";
-import DopeUI from "../components/projects/dope-ui";
-import EIP6963 from "../components/projects/eip-6963";
-import PortfolioWebsite from "../components/projects/portfolio-website";
-import ReefExplorer from "../components/projects/reef-explorer";
-import ReefWallet from "../components/projects/reef-wallet";
-import Rezonance from "../components/projects/rezonance";
-import SquidApp from "../components/projects/sqwid-app";
-import TomJerry from "../components/projects/tom-jerry";
-import Vinyl from "../components/projects/vinyl";
-import WalletConnectDocs from "../components/projects/walletconnect-docs";
-import Web3ConfIndia from "../components/projects/web3conf-india";
+import ReefExplorer from "@/components/projects/reef-explorer";
+import ReefWallet from "@/components/projects/reef-wallet";
+import Rezonance from "@/components/projects/rezonance";
+import SquidApp from "@/components/projects/sqwid-app";
+import TomJerry from "@/components/projects/tom-jerry";
+import Vinyl from "@/components/projects/vinyl";
+import WalletConnectDocs from "@/components/projects/walletconnect-docs";
 import type { ProjectItem } from "./projects";
 
 export const PROJECT_ITEMS: ProjectItem[] = [
@@ -133,13 +133,13 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		component: TomJerry,
 	},
 	{
-		id: "web3conf-india",
-		title: "Web3Conf India",
-		description:
-			"India's largest chain agnostic web3 conference. Apart from being an organizer, I also made the website for this.",
-		link: "https://web3confindia.xyz/",
-		image: "https://www.web3confindia.xyz/square.png",
-		component: Web3ConfIndia,
+		id: "flow-hackathon",
+		title: "Flow Hackathon",
+		description: "Created the landing page for the Flow Hackathon",
+		link: "https://hackathon.flow.com/",
+		image:
+			"https://cdn.prod.website-files.com/5f734f4dbd95382f4fdfa0ea/67e175cb23ef717b2fbd75d7_Flow_Icon_Color.png",
+		component: FlowHackathon,
 	},
 	{
 		id: "vinyl",
