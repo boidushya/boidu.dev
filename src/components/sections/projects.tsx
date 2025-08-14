@@ -12,9 +12,9 @@ const ProjectsSection = () => {
 			<AnimatePresence initial={true} mode="popLayout">
 				<AnimatedContainer className={`${BENTO_GRID_CLASSES} w-full`}>
 					{BENTO_LAYOUT_ORDER.map(({ id, size }) => {
-						const item = PROJECT_ITEMS.find(project => project.id === id);
+						const item = PROJECT_ITEMS.find((project) => project.id === id);
 						if (!item) return null;
-						
+
 						return (
 							<BentoProjectCard
 								key={item.id}

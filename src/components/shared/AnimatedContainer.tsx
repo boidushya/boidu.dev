@@ -27,7 +27,9 @@ export const AnimatedContainer = ({
 
 	const MotionComponent = motion[
 		as as keyof typeof motion
-	] as React.ComponentType<any>;
+	] as React.ComponentType<
+		HTMLMotionProps<"div" | "ol" | "ul" | "section" | "article">
+	>;
 
 	return (
 		<MotionComponent

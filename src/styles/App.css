@@ -422,3 +422,48 @@ img.bg {
 		transform: rotate(360deg);
 	}
 }
+
+.coin__container {
+	--coin-size: 14rem;
+	--thickness: 16px;
+	--color: #8f670d;
+}
+
+.coin__container:before,
+.coin__container:after {
+	content: "";
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	overflow: hidden;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background: var(--color);
+}
+
+.coin__container:before {
+	transform: rotateY(180deg) translateZ(1px);
+}
+
+.coin__container:after {
+	transform: rotateY(180deg) translateZ(var(--thickness));
+}
+
+.coin__container--thickness {
+	content: "";
+	position: absolute;
+	background-color: var(--color);
+	top: 0;
+	bottom: 0;
+	left: calc(var(--coin-size) / 2 - var(--thickness));
+	width: var(--thickness);
+	z-index: -10;
+	transform: rotateY(-90deg) translateX(-1px);
+	transform-origin: 100% 50%;
+}
+
+.coin__container--tails {
+	transform: rotateY(180deg) translateZ(calc(var(--thickness) + 1px));
+}
