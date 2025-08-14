@@ -12,17 +12,19 @@ const TomJerry = () => {
 		<div className="relative w-full h-full overflow-hidden">
 			<video
 				ref={videoRef}
-				src="/etjfo.mp4"
 				autoPlay
 				loop
 				muted
 				playsInline
-				preload="metadata"
+				preload="auto"
 				onLoadedData={handleLoadedData}
 				className={`w-full h-full object-cover transition-opacity duration-500 ${
 					isLoaded ? "opacity-100" : "opacity-0"
 				}`}
-			/>
+			>
+				<source src="/etjfo.mp4" type="video/mp4" />
+				Your browser does not support the video tag.
+			</video>
 		</div>
 	);
 };
