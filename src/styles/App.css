@@ -211,7 +211,7 @@ ol#songs > li .thumb-container > img {
 }
 
 .hero-wrapper {
-	margin-top: 18rem;
+	margin-top: 16rem;
 }
 
 .bg-container {
@@ -470,6 +470,6 @@ img.bg {
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	animation:
-		animateLoadingLogo 1.2s ease infinite,
-		rotateLoadingLogo 1.2s cubic-bezier(0.68, -0.55, 0.51, 1.57) infinite;
+		animateLoadingLogo 1.5s ease infinite,
+		rotateLoadingLogo 1.5s cubic-bezier(0.68, -0.55, 0.51, 1.57) infinite;
 }
