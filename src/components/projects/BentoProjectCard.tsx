@@ -35,7 +35,7 @@ export const BentoProjectCard = ({
 	const styles = buildClassName([
 		sizeClasses[size],
 		className,
-		"relative rounded-xl border border-zinc-500/10",
+		"relative border border-zinc-500/15 rounded-2xl overflow-hidden",
 		"group cursor-pointer min-h-[128px]",
 	]);
 
@@ -45,20 +45,20 @@ export const BentoProjectCard = ({
 				href={link}
 				target="_blank"
 				rel="noreferrer"
-				className="absolute inset-0 z-10 rounded-xl focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
+				className="absolute inset-0 z-10 focus-visible:outline-dashed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/50"
 			>
 				<span className="sr-only">{title}</span>
 			</a>
 
 			{PreviewComponent && (
-				<div className="absolute inset-0 overflow-hidden transition-all duration-[400ms] ease-in-out sm:grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 rounded-xl">
+				<div className="absolute inset-0 overflow-hidden transition-all duration-[400ms] ease-in-out sm:grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 ">
 					<PreviewComponent />
 				</div>
 			)}
 
-			<div className="absolute inset-0 overflow-hidden bento-content-mask rounded-xl" />
+			<div className="absolute inset-0 overflow-hidden bento-content-mask " />
 
-			<div className="absolute bottom-0 left-0 right-0 z-20 p-4 pb-2 overflow-hidden rounded-xl">
+			<div className="absolute bottom-0 left-0 right-0 z-20 p-4 pb-2 overflow-hidden ">
 				<AnimatePresence mode="popLayout">
 					<motion.div
 						initial="initial"
