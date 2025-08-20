@@ -51,7 +51,7 @@ export const BentoProjectCard = ({
 			</a>
 
 			{PreviewComponent && (
-				<div className="absolute inset-0 overflow-hidden transition-all duration-[400ms] ease-in-out sm:grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 rounded-xl">
+				<div className="absolute inset-0 overflow-hidden transition-all duration-[400ms] ease-in-out sm:grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 rounded-xl select-none">
 					<PreviewComponent />
 				</div>
 			)}
