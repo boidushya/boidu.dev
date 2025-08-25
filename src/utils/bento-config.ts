@@ -22,8 +22,8 @@ export const BENTO_LAYOUT_ORDER = [
 	{ id: "camp-sdk", size: "small" as BentoSize },
 	{ id: "dope-ui", size: "small" as BentoSize },
 	{ id: "rezonance", size: "medium" as BentoSize },
-	{ id: "portfolio-website", size: "small" as BentoSize },
 	{ id: "sqwid-app", size: "small" as BentoSize },
+	{ id: "portfolio-website", size: "small" as BentoSize },
 	{ id: "walletconnect-docs", size: "large" as BentoSize },
 	{ id: "tom-jerry", size: "smallWide" as BentoSize },
 	{ id: "create-reef-dapp", size: "small" as BentoSize },
@@ -43,4 +43,4 @@ export const BENTO_LAYOUT: Record<string, BentoSize> =
 	);
 
 export const BENTO_GRID_CLASSES =
-	"grid auto-rows-[128px] gap-4 sm:grid-cols-4 grid-cols-1";
+	"grid auto-rows-[128px] gap-5 sm:grid-cols-4 grid-cols-1";

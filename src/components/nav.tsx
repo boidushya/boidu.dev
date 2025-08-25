@@ -41,7 +41,7 @@ const Nav = () => {
 				href="https://blog.boidu.dev"
 				target="_blank"
 				rel="noreferrer"
-				className="flex items-center gap-1 p-0 m-0 mt-4 mb-2 font-bold transition-opacity duration-200 opacity-50 md:opacity-30 md:mt-8 hover:opacity-100 basis-full md:basis-auto"
+				className="flex items-center gap-1 p-0 m-0 mt-4 mb-2 font-bold transition-opacity duration-200 opacity-50 md:mt-8 hover:opacity-100 basis-full md:basis-auto"
 			>
 				Blog
 				<svg
