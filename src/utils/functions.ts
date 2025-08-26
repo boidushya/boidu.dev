@@ -1,3 +1,6 @@
+import { ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
 export const buildClassName = (classNames: string[]): string => {
 	return classNames.filter(Boolean).join(" ");
 };
@@ -66,3 +69,7 @@ export const hslToHex = (h: number, s: number, l: number): string => {
 
 	return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
+
+export function cn(...inputs: ClassValue[]) {
+	return twMerge(clsx(inputs));
+}

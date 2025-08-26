@@ -1,5 +1,6 @@
 :root {
 	--color-fg: hsla(40, 26%, 85%, 1);
+	--color-fg-lighter: hsla(40, 26%, 95%, 1);
 	--color-fg-secondary: hsla(40, 20%, 72%, 1);
 	--color-bg: hsla(0, 0%, 9%, 1);
 	--color-bg-secondary: hsla(0, 0%, 19%, 1);
@@ -191,6 +192,15 @@ ol#songs > li .thumb-container > img {
 	align-items: center;
 	gap: 1.5rem;
 	line-height: 1.333;
+	margin-block: 0.5rem;
+}
+
+.work-title:first-child {
+	margin-top: 0;
+}
+
+.work-title:last-child {
+	margin-bottom: 0;
 }
 
 .work-logo {

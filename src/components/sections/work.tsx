@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import { AnimatedContainer } from "@/components/shared";
+import { ITabContext, TabContext } from "@/contexts/TabContext";
 import {
 	fastStaggerContainerVariants,
 	getGrayscaleAnimation,
@@ -37,7 +38,7 @@ const WorkItem = ({
 				src={logo}
 				alt={alt}
 			/>
-			<span>{children}</span>
+			<span className="text-[var(--color-fg-secondary)]">{children}</span>
 			{showGlow && (
 				<motion.img
 					variants={glowVariants}
@@ -53,14 +54,24 @@ const WorkItem = ({
 };
 
 const WorkSection = () => {
-	const currentWork = WORK_ITEMS[0];
+	// const currentWork = WORK_ITEMS[0];
+
+	const { setActiveTab } = useContext(TabContext) as ITabContext;
+
+	const handleClick = () => {
+		setActiveTab("contact");
+	};
 
 	return (
 		<>
 			<h3>
-				I'm currently working at{" "}
+				{/* I'm currently working at{" "}
 				<a href={currentWork.link} target="_blank" rel="noreferrer">
 					{currentWork.alt}
+				</a> */}
+				I'm currently looking for new{" "}
+				<a role="button" onClick={handleClick}>
+					opportunities
 				</a>
 			</h3>
 			<AnimatedContainer variants={fastStaggerContainerVariants}>
@@ -69,7 +80,7 @@ const WorkSection = () => {
 						<WorkItem
 							logo={item.logo}
 							alt={item.alt}
-							showGlow={index === 0}
+							// showGlow={index === 0}
 							grayScale={index !== WORK_ITEMS.length - 1}
 						>
 							{item.content}

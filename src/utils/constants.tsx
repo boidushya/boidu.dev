@@ -1,3 +1,4 @@
+import { LinkPreview } from "@/components/link-preview";
 import BetterLyrics from "@/components/projects/better-lyrics";
 import Blog from "@/components/projects/blog";
 import CampSDK from "@/components/projects/camp-sdk";
@@ -175,12 +176,10 @@ export const WORK_ITEMS = [
 		link: "https://junction.exchange",
 		content: (
 			<>
-				I'm currently working as a Frontend Lead at{" "}
-				<a href="https://junction.exchange" target="_blank" rel="noreferrer">
-					Junction
-				</a>
-				. My role involves leading our frontend development efforts and making
-				sure the UI/UX is <em>muy bueno</em> ✨
+				I used to work as a Frontend Lead at{" "}
+				<LinkPreview url="https://junction.exchange">Junction</LinkPreview>. My
+				role involved leading our frontend development efforts and making sure
+				the UI/UX is <em>muy bueno</em> ✨
 			</>
 		),
 	},
@@ -191,9 +190,9 @@ export const WORK_ITEMS = [
 		content: (
 			<>
 				Previously, I worked as a Frontend Lead at{" "}
-				<a href="https://www.campnetwork.xyz/" target="_blank" rel="noreferrer">
+				<LinkPreview url="https://www.campnetwork.xyz/">
 					Camp Network
-				</a>
+				</LinkPreview>
 				. My day-to-day involved curating frontend architectures for various
 				projects/dapps under the Camp Network umbrella.
 			</>
@@ -206,9 +205,7 @@ export const WORK_ITEMS = [
 		content: (
 			<>
 				I used to be a Sr. JS Engineer turned Developer Relations Engineer at{" "}
-				<a href="https://walletconnect.com" target="_blank" rel="noreferrer">
-					WalletConnect
-				</a>
+				<LinkPreview url="https://walletconnect.com">WalletConnect</LinkPreview>
 				. I worked on developer education, documentation, and community
 				engagement. I also helped developers build dapps using WalletConnect.
 			</>
@@ -221,14 +218,10 @@ export const WORK_ITEMS = [
 		content: (
 			<>
 				Previously, I've worked at{" "}
-				<a href="https://reef.io" target="_blank" rel="noreferrer">
-					Reef{" "}
-				</a>
-				as a Mobile & App Developer. During my time at Reef, I worked on{" "}
-				<a href="https://sqwid.app" target="_blank" rel="noreferrer">
-					Sqwid
-				</a>
-				, an NFT marketplace running on the Reef chain that features per-item
+				<LinkPreview url="https://reef.io">Reef</LinkPreview> as a Mobile & App
+				Developer. During my time at Reef, I worked on{" "}
+				<LinkPreview url="https://sqwid.app">Sqwid</LinkPreview>, an NFT
+				marketplace running on the Reef chain that features per-item
 				customizable royalties. I was also a part of the Developer Relations
 				team at Reef & hosted several workshops both virtually and irl.
 			</>
@@ -245,6 +238,7 @@ export const WORK_ITEMS = [
 					href="mailto:hi@boidushya.com?subject=Hi Boidushya!&body=Heard you're available for freelancing, are you up for a chat?"
 					target="_blank"
 					rel="noreferrer"
+					className="text-[var(--color-fg)] font-semibold hover:no-underline"
 				>
 					email me
 				</a>
