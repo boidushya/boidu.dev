@@ -1,5 +1,5 @@
 import confetti from "canvas-confetti";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { convertHSLValuesToString, hslToHex } from "@/utils/functions";
 import { useColorAnimation } from "@/utils/hooks";
@@ -33,9 +33,10 @@ const Rang = () => {
     ) {
       confettiRef.current({
         particleCount: 100,
-        spread: 50,
+        spread: 80,
         origin: { y: 0.8 },
         scalar: 0.75,
+        gravity: 0.5,
         startVelocity: 30,
         colors: [
           hslToHex(targetColor.h, targetColor.s, 30),
@@ -60,7 +61,7 @@ const Rang = () => {
     >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 z-20 pointer-events-none"
+        className="absolute inset-0 z-20 pointer-events-none size-full"
       />
       <div className="relative z-10 h-full p-4 overflow-hidden">
         <div

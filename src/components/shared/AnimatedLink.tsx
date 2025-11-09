@@ -1,14 +1,14 @@
-import { type HTMLMotionProps, motion } from "framer-motion";
+import { type HTMLMotionProps, motion } from "motion/react";
 import { slideUpItemVariants } from "@/utils/animations";
 
 interface AnimatedLinkProps extends HTMLMotionProps<"a"> {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 export const AnimatedLink = ({ children, ...props }: AnimatedLinkProps) => {
-	return (
-		<motion.a variants={slideUpItemVariants} {...props}>
-			{children}
-		</motion.a>
-	);
+  return (
+    <motion.a variants={slideUpItemVariants} {...props}>
+      {children}
+    </motion.a>
+  );
 };
