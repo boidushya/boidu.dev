@@ -97,6 +97,7 @@ const Banner = () => {
             src="https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png"
             className="absolute -top-6 -right-6 size-24 opacity-10"
             alt="Better Lyrics for Youtube Music"
+            loading="lazy"
           />
         </motion.div>
       )}

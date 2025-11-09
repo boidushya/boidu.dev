@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Fragment } from "react";
+import { Fragment, memo, useMemo } from "react";
 import { AnimatedContainer } from "@/components/shared";
 import {
   fastStaggerContainerVariants,
@@ -18,7 +18,7 @@ export interface WorkItemProps {
   showGlow?: boolean;
 }
 
-const WorkItem = ({
+const WorkItemComponent = ({
   logo,
   alt,
   children,
@@ -26,8 +26,16 @@ const WorkItem = ({
   grayScale = false,
 }: WorkItemProps) => {
   const isAnimated = !showGlow && grayScale;
-  const grayscaleAnimation = getGrayscaleAnimation(isAnimated);
-  const opacityAnimation = getOpacityAnimation(isAnimated);
+
+  // Memoize animation configurations to prevent recalculation
+  const grayscaleAnimation = useMemo(
+    () => getGrayscaleAnimation(isAnimated),
+    [isAnimated]
+  );
+  const opacityAnimation = useMemo(
+    () => getOpacityAnimation(isAnimated),
+    [isAnimated]
+  );
 
   return (
     <motion.div
@@ -39,6 +47,7 @@ const WorkItem = ({
         className="work-logo"
         src={logo}
         alt={alt}
+        loading="lazy"
       />
       <motion.span
         {...opacityAnimation}
@@ -54,11 +63,14 @@ const WorkItem = ({
           className="absolute top-0 -left-2 -z-[1] size-[4rem] object-cover blur-xl saturate-150"
           src={logo}
           alt={alt}
+          loading="lazy"
         />
       )}
     </motion.div>
   );
 };
+
+const WorkItem = memo(WorkItemComponent);
 
 const WorkSection = () => {
   const currentWork = WORK_ITEMS[0];

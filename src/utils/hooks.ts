@@ -19,14 +19,22 @@ export const useColorAnimation = (): ColorAnimationState => {
 	const hexValue = hslToHex(currentColor.h, currentColor.s, currentColor.l);
 	const backgroundOffset = manipulateColor(targetColor, { l: 10 });
 
+	// Store timeout/interval IDs in refs to ensure cleanup
+	const timeoutsRef = React.useRef<Set<number>>(new Set());
+	const intervalsRef = React.useRef<Set<number>>(new Set());
+
 	const animateColorTransition = React.useCallback(
-		(controller: AbortController, animationTarget = targetColor) => {
+		(controller: AbortController, animationTarget: { h: number; s: number; l: number }) => {
 			const animationSteps = 5;
 			let step = 0;
+			let confettiTimeout: number | null = null;
+			let hideConfettiTimeout: number | null = null;
 
-			const animationInterval = setInterval(() => {
+			const animationInterval = window.setInterval(() => {
 				if (controller.signal.aborted) {
 					clearInterval(animationInterval);
+					if (confettiTimeout) clearTimeout(confettiTimeout);
+					if (hideConfettiTimeout) clearTimeout(hideConfettiTimeout);
 					return;
 				}
 
@@ -40,10 +48,20 @@ export const useColorAnimation = (): ColorAnimationState => {
 						const newColor = manipulateColor(prev, colorDelta);
 
 						if (step === animationSteps - 1) {
-							setTimeout(() => {
-								setIsConfettiVisible(true);
-								setTimeout(() => setIsConfettiVisible(false), 5000);
+							confettiTimeout = window.setTimeout(() => {
+								if (!controller.signal.aborted) {
+									setIsConfettiVisible(true);
+									hideConfettiTimeout = window.setTimeout(() => {
+										if (!controller.signal.aborted) {
+											setIsConfettiVisible(false);
+										}
+										if (hideConfettiTimeout) timeoutsRef.current.delete(hideConfettiTimeout);
+									}, 5000);
+									if (hideConfettiTimeout) timeoutsRef.current.add(hideConfettiTimeout);
+								}
+								if (confettiTimeout) timeoutsRef.current.delete(confettiTimeout);
 							}, 600);
+							if (confettiTimeout) timeoutsRef.current.add(confettiTimeout);
 						}
 
 						return newColor;
@@ -52,33 +70,57 @@ export const useColorAnimation = (): ColorAnimationState => {
 				} else {
 					setCurrentColor(animationTarget);
 					clearInterval(animationInterval);
+					intervalsRef.current.delete(animationInterval);
 
-					setTimeout(() => {
+					const nextTimeout = window.setTimeout(() => {
 						if (!controller.signal.aborted) {
 							const newTarget = getRandomColor();
 							setTargetColor(newTarget);
 							setCurrentColor(getRandomColor());
 							animateColorTransition(controller, newTarget);
 						}
+						timeoutsRef.current.delete(nextTimeout);
 					}, 5000);
+					timeoutsRef.current.add(nextTimeout);
 				}
 			}, 1000);
 
+			intervalsRef.current.add(animationInterval);
+
 			controller.signal.addEventListener("abort", () => {
 				clearInterval(animationInterval);
+				intervalsRef.current.delete(animationInterval);
+				if (confettiTimeout) {
+					clearTimeout(confettiTimeout);
+					timeoutsRef.current.delete(confettiTimeout);
+				}
+				if (hideConfettiTimeout) {
+					clearTimeout(hideConfettiTimeout);
+					timeoutsRef.current.delete(hideConfettiTimeout);
+				}
 			});
 		},
-		[targetColor],
+		[],
 	);
 
 	React.useEffect(() => {
 		const controller = new AbortController();
-		animateColorTransition(controller);
+		animateColorTransition(controller, targetColor);
+
 		return () => {
 			controller.abort();
+			// Clean up all tracked timeouts and intervals
+			for (const timeout of timeoutsRef.current) {
+				clearTimeout(timeout);
+			}
+			for (const interval of intervalsRef.current) {
+				clearInterval(interval);
+			}
+			timeoutsRef.current.clear();
+			intervalsRef.current.clear();
 			setCurrentColor(initialColor);
 		};
-	}, [animateColorTransition, initialColor]);
+	}, [animateColorTransition, initialColor, targetColor]);
 
 	return {
 		currentColor,
@@ -175,6 +217,7 @@ export const useLyricsAnimation = (lyrics: string[]): LyricsAnimationState => {
 		};
 
 		let time = 0;
+		let animationFrameId: number;
 
 		const animate = () => {
 			time += 0.015;
@@ -221,7 +264,7 @@ export const useLyricsAnimation = (lyrics: string[]): LyricsAnimationState => {
 
 			ctx.globalCompositeOperation = "source-over";
 
-			requestAnimationFrame(animate);
+			animationFrameId = requestAnimationFrame(animate);
 		};
 
 		resizeCanvas();
@@ -232,6 +275,7 @@ export const useLyricsAnimation = (lyrics: string[]): LyricsAnimationState => {
 
 		return () => {
 			window.removeEventListener("resize", handleResize);
+			cancelAnimationFrame(animationFrameId);
 		};
 	}, []);
 

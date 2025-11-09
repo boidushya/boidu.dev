@@ -14,7 +14,7 @@ const SongComponent = ({ title, thumbnail, link, artist }: Song) => {
 		<AnimatedListItem variants={slideRightItemVariants}>
 			<a href={link} target="_blank" rel="noreferrer">
 				<div className="thumb-container">
-					<img src={thumbnail} alt={title} className="max-w-[none]" />
+					<img src={thumbnail} alt={title} className="max-w-[none]" loading="lazy" />
 				</div>
 				<div className="song-info">
 					<h4>{title}</h4>
@@ -43,7 +43,7 @@ const MusicSection = () => {
 		<>
 			<h3>{MUSIC_TEXTS.SECTION_TITLE}</h3>
 			<a className="ytm-title" href={MUSIC_LINKS.YOUTUBE_MUSIC_PLAYLIST}>
-				<img src={MUSIC_LINKS.FAVICON} alt="Youtube Music Playlist" />
+				<img src={MUSIC_LINKS.FAVICON} alt="Youtube Music Playlist" loading="lazy" />
 				<p>{MUSIC_TEXTS.PLAYLIST_DESCRIPTION}</p>
 			</a>
 			<AnimatedContainer as="ol" id="songs" className="mt-4">

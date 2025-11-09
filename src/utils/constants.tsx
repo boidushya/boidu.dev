@@ -1,22 +1,25 @@
+import { lazy } from "react";
 import { LinkPreview } from "@/components/link-preview";
-import BetterLyrics from "@/components/projects/better-lyrics";
-import Blog from "@/components/projects/blog";
-import CampSDK from "@/components/projects/camp-sdk";
-import CampUIKit from "@/components/projects/camp-ui-kit";
-import CreateReefDapp from "@/components/projects/create-reef-dapp";
-import DopeUI from "@/components/projects/dope-ui";
-import EIP6963 from "@/components/projects/eip-6963";
-import FlowHackathon from "@/components/projects/flow-hackathon";
-import PortfolioWebsite from "@/components/projects/portfolio-website";
-import Rang from "@/components/projects/rang";
-import ReefExplorer from "@/components/projects/reef-explorer";
-import ReefWallet from "@/components/projects/reef-wallet";
-import Rezonance from "@/components/projects/rezonance";
-import SquidApp from "@/components/projects/sqwid-app";
-import TomJerry from "@/components/projects/tom-jerry";
-import Vinyl from "@/components/projects/vinyl";
-import WalletConnectDocs from "@/components/projects/walletconnect-docs";
 import type { ProjectItem } from "./projects";
+
+// Lazy load all project preview components for better performance
+const BetterLyrics = lazy(() => import("@/components/projects/better-lyrics"));
+const Blog = lazy(() => import("@/components/projects/blog"));
+const CampSDK = lazy(() => import("@/components/projects/camp-sdk"));
+const CampUIKit = lazy(() => import("@/components/projects/camp-ui-kit"));
+const CreateReefDapp = lazy(() => import("@/components/projects/create-reef-dapp"));
+const DopeUI = lazy(() => import("@/components/projects/dope-ui"));
+const EIP6963 = lazy(() => import("@/components/projects/eip-6963"));
+const FlowHackathon = lazy(() => import("@/components/projects/flow-hackathon"));
+const PortfolioWebsite = lazy(() => import("@/components/projects/portfolio-website"));
+const Rang = lazy(() => import("@/components/projects/rang"));
+const ReefExplorer = lazy(() => import("@/components/projects/reef-explorer"));
+const ReefWallet = lazy(() => import("@/components/projects/reef-wallet"));
+const Rezonance = lazy(() => import("@/components/projects/rezonance"));
+const SquidApp = lazy(() => import("@/components/projects/sqwid-app"));
+const TomJerry = lazy(() => import("@/components/projects/tom-jerry"));
+const Vinyl = lazy(() => import("@/components/projects/vinyl"));
+const WalletConnectDocs = lazy(() => import("@/components/projects/walletconnect-docs"));
 
 export const PROJECT_ITEMS: ProjectItem[] = [
 	{

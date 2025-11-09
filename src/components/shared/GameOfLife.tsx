@@ -13,6 +13,7 @@ export const GameOfLife = ({
 }: GameOfLifeProps) => {
 	const canvasRef = useRef<HTMLCanvasElement>(null);
 	const animationIdRef = useRef<number>();
+	const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
 	const resizeCanvas = useCallback(() => {
 		const canvas = canvasRef.current;
@@ -24,7 +25,7 @@ export const GameOfLife = ({
 
 	const gridRef = useRef<boolean[][]>([]);
 	const lastUpdateRef = useRef(0);
-	const gridHistoryRef = useRef<string[]>([]);
+	const gridHistoryRef = useRef<Set<string>>(new Set());
 	const stuckCounterRef = useRef(0);
 
 	const initializeGrid = useCallback((cols: number, rows: number) => {
@@ -59,9 +60,14 @@ export const GameOfLife = ({
 	);
 
 	const gridToString = useCallback((grid: boolean[][]) => {
-		return grid
-			.map((row) => row.map((cell) => (cell ? "1" : "0")).join(""))
-			.join("");
+		// Use a more efficient string building method
+		let result = "";
+		for (const row of grid) {
+			for (const cell of row) {
+				result += cell ? "1" : "0";
+			}
+		}
+		return result;
 	}, []);
 
 	const updateGrid = useCallback(() => {
@@ -90,11 +96,11 @@ export const GameOfLife = ({
 		const newGridString = gridToString(newGrid);
 		const history = gridHistoryRef.current;
 
-		if (history.includes(newGridString)) {
+		if (history.has(newGridString)) {
 			stuckCounterRef.current++;
 			if (stuckCounterRef.current > 2) {
 				initializeGrid(cols, rows);
-				gridHistoryRef.current = [];
+				gridHistoryRef.current = new Set();
 				stuckCounterRef.current = 0;
 				return;
 			}
@@ -102,9 +108,12 @@ export const GameOfLife = ({
 			stuckCounterRef.current = 0;
 		}
 
-		history.push(newGridString);
-		if (history.length > 10) {
-			history.shift();
+		history.add(newGridString);
+		// Keep only the last 10 states by converting to array
+		if (history.size > 10) {
+			const arr = Array.from(history);
+			history.clear();
+			arr.slice(-10).forEach((item) => history.add(item));
 		}
 
 		gridRef.current = newGrid;
@@ -140,16 +149,20 @@ export const GameOfLife = ({
 			const canvas = canvasRef.current;
 			if (!canvas) return;
 
-			const ctx = canvas.getContext("2d");
+			// Cache the context
+			if (!ctxRef.current) {
+				ctxRef.current = canvas.getContext("2d");
+			}
+			const ctx = ctxRef.current;
 			if (!ctx) return;
 
+			// Only update grid at 24fps
 			if (time - lastUpdateRef.current > 1000 / 24) {
 				updateGrid();
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				drawGameOfLife(ctx, canvas.width, canvas.height);
 				lastUpdateRef.current = time;
 			}
-
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			drawGameOfLife(ctx, canvas.width, canvas.height);
 
 			animationIdRef.current = requestAnimationFrame(animate);
 		},

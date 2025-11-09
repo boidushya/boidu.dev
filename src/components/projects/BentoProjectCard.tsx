@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "motion/react";
-import React from "react";
+import React, { Suspense } from "react";
 import { FallbackIcon } from "@/components/shared";
 import { hoverVariants, slideUpItemVariants } from "@/utils/animations";
 import { BentoSize } from "@/utils/bento-config";
@@ -21,7 +21,7 @@ const sizeClasses = {
   tall: "sm:col-span-1 row-span-1",
 };
 
-export const BentoProjectCard = ({
+const BentoProjectCardComponent = ({
   title,
   description,
   link,
@@ -32,12 +32,16 @@ export const BentoProjectCard = ({
 }: BentoProjectCardProps) => {
   const [imageError, setImageError] = React.useState(false);
 
-  const styles = buildClassName([
-    sizeClasses[size],
-    className,
-    "relative border border-zinc-500/15 rounded-2xl overflow-hidden",
-    "group cursor-pointer min-h-[128px]",
-  ]);
+  const styles = React.useMemo(
+    () =>
+      buildClassName([
+        sizeClasses[size],
+        className,
+        "relative border border-zinc-500/15 rounded-2xl overflow-hidden",
+        "group cursor-pointer min-h-[128px]",
+      ]),
+    [size, className],
+  );
 
   return (
     <motion.div variants={slideUpItemVariants} className={styles}>
@@ -52,7 +56,9 @@ export const BentoProjectCard = ({
 
       {PreviewComponent && (
         <div className="absolute inset-0 overflow-hidden transition-all duration-[400ms] ease-in-out sm:grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 ">
-          <PreviewComponent />
+          <Suspense fallback={null}>
+            <PreviewComponent />
+          </Suspense>
         </div>
       )}
 
@@ -93,3 +99,5 @@ export const BentoProjectCard = ({
     </motion.div>
   );
 };
+
+export const BentoProjectCard = React.memo(BentoProjectCardComponent);

@@ -23,6 +23,14 @@ const Rang = () => {
         useWorker: true,
       });
     }
+
+    // Cleanup confetti instance on unmount
+    return () => {
+      if (confettiRef.current) {
+        confettiRef.current.reset();
+        confettiRef.current = null;
+      }
+    };
   }, []);
 
   useEffect(() => {
