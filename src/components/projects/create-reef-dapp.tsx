@@ -69,8 +69,8 @@ const CreateReefDapp = () => {
 										y2="100%"
 										id="logograd"
 									>
-										<stop stop-color="#681CFF" offset="0%"></stop>
-										<stop stop-color="#FD3F83" offset="100%"></stop>
+										<stop stopColor="#681CFF" offset="0%"></stop>
+										<stop stopColor="#FD3F83" offset="100%"></stop>
 									</linearGradient>
 								</defs>
 								<path

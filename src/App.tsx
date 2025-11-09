@@ -12,33 +12,33 @@ import { ITabContext, TabContext } from "@/contexts/TabContext";
 import { pageTransitionVariants } from "@/utils/animations";
 
 const App = () => {
-  const { activeTab } = React.useContext(TabContext) as ITabContext;
+	const { activeTab } = React.useContext(TabContext) as ITabContext;
 
-  return (
-    <>
-      <BGContainer />
-      <HeroWrapper />
-      <Nav />
-      <main className="pb-24">
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.section
-            key={activeTab}
-            variants={pageTransitionVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            className="flex flex-col items-start"
-          >
-            {activeTab === "projects" && <ProjectsSection key="projects" />}
-            {activeTab === "work" && <WorkSection key="work" />}
-            {activeTab === "music" && <MusicSection key="music" />}
-            {activeTab === "contact" && <ContactSection key="contact" />}
-          </motion.section>
-        </AnimatePresence>
-        <Banner />
-      </main>
-    </>
-  );
+	return (
+		<>
+			<BGContainer />
+			<HeroWrapper />
+			<Nav />
+			<main className="pb-24">
+				<AnimatePresence mode="wait" initial={false}>
+					<motion.section
+						key={activeTab}
+						variants={pageTransitionVariants}
+						initial="initial"
+						animate="animate"
+						exit="exit"
+						className="flex flex-col items-start"
+					>
+						{activeTab === "projects" && <ProjectsSection key="projects" />}
+						{activeTab === "work" && <WorkSection key="work" />}
+						{activeTab === "music" && <MusicSection key="music" />}
+						{activeTab === "contact" && <ContactSection key="contact" />}
+					</motion.section>
+				</AnimatePresence>
+				<Banner />
+			</main>
+		</>
+	);
 };
 
 export default App;
