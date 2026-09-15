@@ -1,0 +1,16 @@
+.bl-lyrics-mount {
+	--blyrics-text-color: #fff;
+	--blyrics-inactive-opacity: 0.2;
+	--blyrics-font-family: "Satoshi", sans-serif;
+	--blyrics-font-size: clamp(1.1rem, 2.4vw, 1.75rem);
+	overflow-y: auto;
+	scrollbar-width: none;
+}
+
+.bl-lyrics-mount::-webkit-scrollbar {
+	display: none;
+}
+
+.bl-lyrics-mount .blyrics-container {
+	padding-top: var(--blyrics-padding-top, 1.25rem);
+}

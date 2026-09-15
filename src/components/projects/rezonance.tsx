@@ -1,12 +1,15 @@
 import NumberFlow from "@number-flow/react";
 import { useEffect, useState } from "react";
+import KawarpBackground from "@/components/shared/KawarpBackground";
+import { lonerismArt } from "@/utils/music";
 
 const Rezonance = () => {
 	const name = "Feels Like We Only Go Backwards";
 	const artist = "Tame Impala";
 	const trackLength = 94;
 
-	const albumArt = "/flwogb.jpeg";
+	const albumArt = lonerismArt(400);
+	const auroraArt = lonerismArt(256);
 
 	const [currentTime, setCurrentTime] = useState(0);
 
@@ -35,8 +38,10 @@ const Rezonance = () => {
 	const ss = Math.floor(currentTime % 60);
 
 	return (
-		<div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-red-900 via-orange-900 to-pink-900">
-			<div className="relative w-full max-w-sm p-8 mx-4 -top-20">
+		<div className="absolute inset-0 flex items-center justify-center">
+			<KawarpBackground src={auroraArt} className="absolute inset-0" />
+			<div className="absolute inset-0 bg-black/30" />
+			<div className="relative z-10 w-full max-w-sm p-8 mx-4 -top-20">
 				<div className="text-center">
 					<div className="mb-2">
 						<img

@@ -1,116 +1,64 @@
-import { buildClassName } from "@/utils/functions";
-import { useLyricsAnimation } from "@/utils/hooks";
+import { createLyricsRenderer } from "@braccato/core";
+import "@braccato/core/styles/variables.css";
+import "@braccato/core/styles/lyrics.css";
+import "@braccato/core/styles/instrumental.css";
+import { parseTTMLContent } from "@braccato/parsers";
+import { useEffect, useMemo, useRef } from "react";
+import ttml from "@/assets/lyrics/feels-like-we-only-go-backwards.ttml?raw";
+import KawarpBackground from "@/components/shared/KawarpBackground";
+import { lonerismArt } from "@/utils/music";
+import braccatoTheme from "./braccato-theme.css?raw";
+import "./better-lyrics.css";
 
-const LYRICS = [
-	"It feels like I only go backwards, baby",
-	"Every part of me says: Go ahead",
-	"I got my hopes up again (oh, no), not again",
-	"Feels like we only go backwards, darling",
-	"",
-	"I know that you think you sound silly when you call my name",
-	"But I hear it inside my head all day",
-	"When I realise I'm just holding on to the hope that maybe",
-	"Your feelings don't show",
-	"",
-	"It feels like I only go backwards, baby",
-	"Every part of me says: Go ahead",
-	"I got my hopes up again (oh, no), not again",
-	"Feels like we only go backwards, darling",
-	"",
-	"The seed of all this indecision isn't me, oh, no",
-	"'Cause I decided long ago",
-	"But that's the way it seems to go when trying so hard to get to something real",
-	"It feels",
-	"",
-	"It feels like I only go backwards, darling",
-	"Every part of me says: Go ahead",
-	"I got my hopes up again (oh, no), not again",
-	"Feels like we only go backwards, darling",
-	"",
-	"It feels like I only go backwards, baby",
-	"Every part of me says: Go ahead",
-	"I got my hopes up again (oh, no), not again",
-	"Feels like we only go backwards, darling",
-	"",
-	"It feels like I only go backwards, baby",
-	"Every part of me says: Go ahead",
-	"I got my hopes up again (oh, no), not again",
-	"Feels like we only go backwards, darling",
-];
+const ART_URL = lonerismArt(256);
+
+const LOOP_TAIL_S = 2;
 
 const BetterLyrics = () => {
-	const {
-		currentLineIndex,
-		currentWordIndex,
-		lineRefs,
-		containerRef,
-		canvasRef,
-	} = useLyricsAnimation(LYRICS);
-
-	const renderLine = (line: string, lineIndex: number) => {
-		const isCurrentLine = lineIndex === currentLineIndex;
-		const isPastLine = lineIndex < currentLineIndex;
-
-		if (!line) {
-			return (
-				<div
-					key={lineIndex}
-					className="h-4"
-					ref={(el) => (lineRefs.current[lineIndex] = el)}
-				/>
-			);
-		}
-
-		const words = line.split(" ");
-
-		return (
-			<div
-				key={lineIndex}
-				ref={(el) => (lineRefs.current[lineIndex] = el)}
-				className={buildClassName([
-					"my-4 text-xl font-bold transition-all duration-500 delay-200 leading-relaxed",
-					isPastLine ? "opacity-10 text-white" : "text-white/30",
-				])}
-			>
-				{words.map((word, wordIndex) => {
-					const isHighlighted =
-						(isCurrentLine && wordIndex < currentWordIndex) ||
-						(isPastLine && wordIndex < words.length);
-					const isCurrentWord = isCurrentLine && wordIndex === currentWordIndex;
-
-					return (
-						<span
-							key={`${lineIndex}-${wordIndex}`}
-							className={buildClassName([
-								"inline-block mr-1 relative",
-								isHighlighted ? "text-white" : "",
-							])}
-						>
-							{isCurrentWord && isCurrentLine && (
-								<span
-									className="absolute inset-0 text-white animate-reveal-color"
-									style={{
-										clipPath: "inset(0 100% 0 0)",
-									}}
-								>
-									{word}
-								</span>
-							)}
-							<span>{word}</span>
-						</span>
-					);
-				})}
-			</div>
+	const mountRef = useRef<HTMLDivElement>(null);
+	const { lyrics, durationS } = useMemo(() => {
+		const parsed = parseTTMLContent(ttml);
+		const end = parsed.lyrics.reduce(
+			(max, l) => Math.max(max, l.startTimeMs + l.durationMs),
+			0,
 		);
-	};
+		return { lyrics: parsed.lyrics, durationS: end / 1000 + LOOP_TAIL_S };
+	}, []);
+
+	useEffect(() => {
+		const mount = mountRef.current;
+		if (!mount) return;
+
+		const renderer = createLyricsRenderer({ document, window, mount });
+		renderer.setTheme(braccatoTheme);
+		renderer.setLyrics(lyrics);
+
+		let raf = 0;
+		let start = performance.now();
+		const loop = (now: number) => {
+			const t = (now - start) / 1000;
+			if (t >= durationS) {
+				start = now;
+				renderer.tick(0, { isPlaying: true, smoothScroll: false });
+			} else {
+				renderer.tick(t, { isPlaying: true });
+			}
+			raf = requestAnimationFrame(loop);
+		};
+		raf = requestAnimationFrame(loop);
+
+		return () => {
+			cancelAnimationFrame(raf);
+			renderer.destroy();
+		};
+	}, [lyrics, durationS]);
 
 	return (
-		<div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-950/30 to-pink-950/30">
-			<canvas ref={canvasRef} className="absolute inset-0 z-0 w-full h-full" />
-			<div className="relative z-10 h-full p-4 overflow-hidden">
-				<div ref={containerRef}>
-					{LYRICS.map((line, lineIndex) => renderLine(line, lineIndex))}
-				</div>
+		<div className="absolute inset-0 z-0">
+			<KawarpBackground src={ART_URL} className="absolute inset-0" />
+			<div className="absolute inset-0 bg-black/30" />
+			<div className="absolute inset-0 z-10 overflow-hidden">
+				<div ref={mountRef} className="bl-lyrics-mount h-full px-4" />
 			</div>
 		</div>
 	);

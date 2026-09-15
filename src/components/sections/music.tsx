@@ -1,21 +1,58 @@
 import { useQuery } from "@tanstack/react-query";
+import type { ReactNode } from "react";
 import { AnimatedContainer, AnimatedListItem } from "@/components/shared";
+import MotionArt from "@/components/shared/MotionArt";
 import { slideRightItemVariants } from "@/utils/animations";
 import {
 	buildYouTubeApiUrl,
+	fetchAnimatedArt,
 	MUSIC_LINKS,
 	MUSIC_TEXTS,
+	resizeAppleArt,
 	Song,
 	transformYouTubeResponse,
 } from "@/utils/music";
 
 const SongComponent = ({ title, thumbnail, link, artist }: Song) => {
+	const { data: art } = useQuery({
+		queryKey: ["artwork", title, artist],
+		queryFn: () => fetchAnimatedArt(title, artist),
+		staleTime: Number.POSITIVE_INFINITY,
+	});
+
+	const cover = art?.static ? resizeAppleArt(art.static, 320) : undefined;
+	const hasMotion = Boolean(art?.animated || art?.videoUrl);
+
+	let coverNode: ReactNode;
+	if (hasMotion) {
+		coverNode = (
+			<MotionArt
+				hlsSrc={art?.animated ?? null}
+				mp4Src={art?.videoUrl ?? null}
+				poster={cover}
+				alt={title}
+				className="cover-art"
+			/>
+		);
+	} else if (cover) {
+		coverNode = (
+			<img src={cover} alt={title} className="cover-art" loading="lazy" />
+		);
+	} else {
+		coverNode = (
+			<img
+				src={thumbnail}
+				alt={title}
+				className="max-w-[none]"
+				loading="lazy"
+			/>
+		);
+	}
+
 	return (
 		<AnimatedListItem variants={slideRightItemVariants}>
 			<a href={link} target="_blank" rel="noreferrer">
-				<div className="thumb-container">
-					<img src={thumbnail} alt={title} className="max-w-[none]" loading="lazy" />
-				</div>
+				<div className="thumb-container">{coverNode}</div>
 				<div className="song-info">
 					<h4>{title}</h4>
 					<p> by {artist}</p>
@@ -43,7 +80,11 @@ const MusicSection = () => {
 		<>
 			<h3>{MUSIC_TEXTS.SECTION_TITLE}</h3>
 			<a className="ytm-title" href={MUSIC_LINKS.YOUTUBE_MUSIC_PLAYLIST}>
-				<img src={MUSIC_LINKS.FAVICON} alt="Youtube Music Playlist" loading="lazy" />
+				<img
+					src={MUSIC_LINKS.FAVICON}
+					alt="Youtube Music Playlist"
+					loading="lazy"
+				/>
 				<p>{MUSIC_TEXTS.PLAYLIST_DESCRIPTION}</p>
 			</a>
 			<AnimatedContainer as="ol" id="songs" className="mt-4">

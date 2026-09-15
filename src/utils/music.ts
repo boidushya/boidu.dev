@@ -59,3 +59,46 @@ export const transformYouTubeResponse = (data: YouTubeApiResponse): Song[] => {
 		thumbnail: item.snippet.thumbnails.high.url,
 	}));
 };
+
+const LONERISM_ART_BASE =
+	"https://yt3.googleusercontent.com/BpDRqoOatQNrzpRmxR-cFXsbxzdYKRnTnSCJ7kg6dC4KDE16FsgcG94WY0Xy9op5CrPuLo8ay2gWUQJW";
+
+export const lonerismArt = (px: number): string =>
+	`${LONERISM_ART_BASE}=w${px}-h${px}-l90-rw`;
+
+export const ARTWORK_API = "https://artwork.boidu.dev/";
+
+export const resizeAppleArt = (url: string, size: number): string =>
+	url.replace(/\/\d+x\d+(bb)?\.(jpg|png|webp)/i, `/${size}x${size}$1.$2`);
+
+export interface AnimatedArt {
+	static: string | null;
+	animated: string | null;
+	videoUrl: string | null;
+}
+
+export const cleanSongTitle = (title: string): string =>
+	title
+		.replace(
+			/\s*[([][^)\]]*(official|video|audio|lyric|visuali|remaster|hd|4k|mv)[^)\]]*[)\]]/gi,
+			"",
+		)
+		.trim();
+
+export const buildArtworkApiUrl = (song: string, artist: string): string =>
+	`${ARTWORK_API}?s=${encodeURIComponent(cleanSongTitle(song))}&a=${encodeURIComponent(artist)}&storefront=us`;
+
+export const fetchAnimatedArt = async (
+	song: string,
+	artist: string,
+): Promise<AnimatedArt> => {
+	const response = await fetch(buildArtworkApiUrl(song, artist));
+	if (!response.ok) return { static: null, animated: null, videoUrl: null };
+	const data = await response.json();
+	if (data?.error) return { static: null, animated: null, videoUrl: null };
+	return {
+		static: data.static ?? null,
+		animated: data.animated ?? null,
+		videoUrl: data.videoUrl ?? null,
+	};
+};

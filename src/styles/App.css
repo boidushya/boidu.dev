@@ -17,6 +17,20 @@
 		"Open Sans", "Helvetica Neue", sans-serif;
 }
 
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-fg);
+	outline-offset: 3px;
+	transition: outline-offset 0.15s ease;
+}
+
+* {
+	corner-shape: superellipse(1.2);
+}
+
 html {
 	margin-left: calc(100vw - 100%);
 	margin-right: 0;
@@ -185,6 +199,31 @@ ol#songs > li .thumb-container > img {
 	object-fit: cover;
 	object-position: center;
 	transform: translateY(-32px) translateX(-32px);
+}
+
+ol#songs > li .thumb-container > .cover-art {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	border-radius: 0.5rem;
+	overflow: hidden;
+	object-fit: cover;
+	object-position: center;
+	transform: none;
+}
+
+ol#songs > li .cover-art > .motion-poster,
+ol#songs > li .cover-art > .motion-video {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+ol#songs > li .cover-art > .motion-video {
+	transition: opacity 0.5s ease;
 }
 
 .work-title {
@@ -365,18 +404,6 @@ img.bg {
 	ol#songs > li .thumb-container > img {
 		height: 192px;
 		width: 192px;
-	}
-}
-
-.animate-reveal-color {
-	animation: revealColor 0.3s linear forwards;
-}
-@keyframes revealColor {
-	0% {
-		clip-path: inset(0 100% 0 0);
-	}
-	100% {
-		clip-path: inset(0 0% 0 0);
 	}
 }
 
