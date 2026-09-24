@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@braccato/core": "^1.10.0",
-    "@braccato/parsers": "^0.2.1",
+    "@braccato/parsers": "^0.2.3",
     "@kawarp/core": "^1.2.1",
     "@number-flow/react": "^0.5.10",
     "@radix-ui/react-hover-card": "^1.1.15",
