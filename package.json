@@ -13,7 +13,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@braccato/core": "^1.10.0",
+    "@braccato/core": "^1.11.0",
     "@braccato/parsers": "^0.2.3",
     "@kawarp/core": "^1.2.1",
     "@number-flow/react": "^0.5.10",
