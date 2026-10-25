@@ -1,5 +1,6 @@
 import type HlsClass from "hls.js";
 import { useEffect, useRef, useState } from "react";
+import { FadeInImage } from "@/components/shared/FadeInImage";
 
 interface MotionArtProps {
 	hlsSrc: string | null;
@@ -71,7 +72,12 @@ const MotionArt = ({
 	return (
 		<div className={className}>
 			{poster && (
-				<img src={poster} alt={alt} className="motion-poster" loading="lazy" />
+				<FadeInImage
+					src={poster}
+					alt={alt}
+					className="motion-poster"
+					loading="lazy"
+				/>
 			)}
 			<video
 				ref={videoRef}

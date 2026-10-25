@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import type { ReactNode } from "react";
-import { AnimatedContainer, AnimatedListItem } from "@/components/shared";
+import {
+	AnimatedContainer,
+	AnimatedListItem,
+	FadeInImage,
+} from "@/components/shared";
 import MotionArt from "@/components/shared/MotionArt";
 import { slideRightItemVariants } from "@/utils/animations";
 import {
@@ -14,7 +18,7 @@ import {
 } from "@/utils/music";
 
 const SongComponent = ({ title, thumbnail, link, artist }: Song) => {
-	const { data: art } = useQuery({
+	const { data: art, isPending } = useQuery({
 		queryKey: ["artwork", title, artist],
 		queryFn: () => fetchAnimatedArt(title, artist),
 		staleTime: Number.POSITIVE_INFINITY,
@@ -23,7 +27,7 @@ const SongComponent = ({ title, thumbnail, link, artist }: Song) => {
 	const cover = art?.static ? resizeAppleArt(art.static, 320) : undefined;
 	const hasMotion = Boolean(art?.animated || art?.videoUrl);
 
-	let coverNode: ReactNode;
+	let coverNode: ReactNode = null;
 	if (hasMotion) {
 		coverNode = (
 			<MotionArt
@@ -36,11 +40,16 @@ const SongComponent = ({ title, thumbnail, link, artist }: Song) => {
 		);
 	} else if (cover) {
 		coverNode = (
-			<img src={cover} alt={title} className="cover-art" loading="lazy" />
+			<FadeInImage
+				src={cover}
+				alt={title}
+				className="cover-art"
+				loading="lazy"
+			/>
 		);
-	} else {
+	} else if (!isPending) {
 		coverNode = (
-			<img
+			<FadeInImage
 				src={thumbnail}
 				alt={title}
 				className="max-w-[none]"
