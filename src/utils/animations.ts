@@ -135,30 +135,3 @@ export const glowVariants: Variants = {
     },
   },
 };
-
-// Work item grayscale filter animation config
-export const getGrayscaleAnimation = (grayScale: boolean) => ({
-  initial: {
-    filter: "grayscale(0%)",
-  },
-  animate: {
-    filter: grayScale ? "grayscale(100%)" : "grayscale(0%)",
-  },
-  transition: {
-    delay: 1.25,
-    duration: 0.5,
-  },
-});
-
-export const getOpacityAnimation = (isAnimated: boolean) => ({
-  initial: {
-    opacity: 1,
-  },
-  animate: {
-    opacity: isAnimated ? 0.6 : 1,
-  },
-  transition: {
-    delay: 1.25,
-    duration: 0.5,
-  },
-});

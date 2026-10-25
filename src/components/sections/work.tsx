@@ -1,10 +1,8 @@
 import { motion } from "motion/react";
-import { Fragment, memo, useMemo } from "react";
+import { Fragment, memo } from "react";
 import { AnimatedContainer } from "@/components/shared";
 import {
   fastStaggerContainerVariants,
-  getGrayscaleAnimation,
-  getOpacityAnimation,
   glowVariants,
   slideDownItemVariants,
 } from "@/utils/animations";
@@ -25,36 +23,24 @@ const WorkItemComponent = ({
   showGlow = false,
   grayScale = false,
 }: WorkItemProps) => {
-  const isAnimated = !showGlow && grayScale;
-
-  // Memoize animation configurations to prevent recalculation
-  const grayscaleAnimation = useMemo(
-    () => getGrayscaleAnimation(isAnimated),
-    [isAnimated]
-  );
-  const opacityAnimation = useMemo(
-    () => getOpacityAnimation(isAnimated),
-    [isAnimated]
-  );
+  const isDimmed = !showGlow && grayScale;
 
   return (
     <motion.div
       variants={slideDownItemVariants}
       className="relative work-title"
     >
-      <motion.img
-        {...grayscaleAnimation}
-        className="work-logo"
+      <img
+        className={isDimmed ? "work-logo work-logo-dim" : "work-logo"}
         src={logo}
         alt={alt}
         loading="lazy"
       />
-      <motion.span
-        {...opacityAnimation}
-        className="text-[var(--color-fg-secondary)]"
+      <span
+        className={`text-[var(--color-fg-secondary)]${isDimmed ? " work-text-dim" : ""}`}
       >
         {children}
-      </motion.span>
+      </span>
       {showGlow && (
         <motion.img
           variants={glowVariants}

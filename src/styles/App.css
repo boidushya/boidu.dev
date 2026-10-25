@@ -250,6 +250,26 @@ ol#songs > li .cover-art > .motion-video {
 	border-radius: 0.25rem;
 }
 
+.work-logo-dim {
+	animation: work-logo-dim 0.5s ease-out 1.25s both;
+}
+
+.work-text-dim {
+	animation: work-text-dim 0.5s ease-out 1.25s both;
+}
+
+@keyframes work-logo-dim {
+	to {
+		filter: grayscale(100%);
+	}
+}
+
+@keyframes work-text-dim {
+	to {
+		opacity: 0.6;
+	}
+}
+
 .ytm-title {
 	display: flex;
 	align-items: center;
