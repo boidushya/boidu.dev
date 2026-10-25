@@ -197,7 +197,7 @@ export const WORK_ITEMS = [
 		),
 	},
 	{
-		logo: "https://pbs.twimg.com/profile_images/1948758995100938240/kSWf3cNk_400x400.jpg",
+		logo: "https://junction.exchange/apple-touch-icon.png",
 		alt: "Junction",
 		link: "https://junction.exchange",
 		content: (
