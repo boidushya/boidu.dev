@@ -34,7 +34,7 @@ const KawarpBackground = ({ src, className }: KawarpBackgroundProps) => {
 		// mount) reuses the stale WebGL context and desyncs the two buffers kawarp
 		// crossfades between, which renders garbage.
 		const canvas = document.createElement("canvas");
-		canvas.style.cssText = "display:block;width:100%;height:100%;";
+		canvas.style.cssText = `display:block;width:100%;height:100%;opacity:0;transition:opacity ${KAWARP_OPTIONS.transitionDuration}ms ease;`;
 		mount.appendChild(canvas);
 
 		const applyCanvasSize = () => {
@@ -51,7 +51,13 @@ const KawarpBackground = ({ src, className }: KawarpBackgroundProps) => {
 		const kawarp = new Kawarp(canvas, KAWARP_OPTIONS);
 		kawarpRef.current = kawarp;
 		kawarp.start();
-		void kawarp.loadImage(srcRef.current).catch(() => undefined);
+		// Kawarp only crossfades between two images, so the first one would pop in.
+		kawarp
+			.loadImage(srcRef.current)
+			.then(() => {
+				canvas.style.opacity = "1";
+			})
+			.catch(() => undefined);
 
 		// Every loadImage swaps one of the two crossfade buffers, so only reload
 		// when the canvas genuinely changed size.
