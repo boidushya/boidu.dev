@@ -15,6 +15,7 @@ export interface BentoProjectConfig extends ProjectItem {
 
 export const BENTO_LAYOUT_ORDER = [
 	{ id: "better-lyrics", size: "large" as BentoSize },
+	{ id: "composer", size: "medium" as BentoSize },
 	{ id: "rang", size: "medium" as BentoSize },
 	{ id: "eip-6963", size: "small" as BentoSize },
 	{ id: "blog", size: "small" as BentoSize },

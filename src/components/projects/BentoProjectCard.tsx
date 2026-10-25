@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "motion/react";
 import React, { Suspense } from "react";
-import { FallbackIcon } from "@/components/shared";
+import { FallbackIcon, VideoPreview } from "@/components/shared";
 import { hoverVariants, slideUpItemVariants } from "@/utils/animations";
 import { BentoSize } from "@/utils/bento-config";
 import { buildClassName } from "@/utils/functions";
@@ -26,11 +26,17 @@ const BentoProjectCardComponent = ({
 	description,
 	link,
 	image,
+	video,
 	PreviewComponent,
 	size = "small",
 	className = "",
 }: BentoProjectCardProps) => {
 	const [imageError, setImageError] = React.useState(false);
+	const preview = video ? (
+		<VideoPreview src={video} />
+	) : (
+		PreviewComponent && <PreviewComponent />
+	);
 
 	const styles = React.useMemo(
 		() =>
@@ -57,11 +63,9 @@ const BentoProjectCardComponent = ({
 					<span className="sr-only">{title}</span>
 				</a>
 
-				{PreviewComponent && (
+				{preview && (
 					<div className="absolute inset-0 overflow-hidden transition-all duration-[400ms] ease-in-out sm:grayscale group-hover:grayscale-0 group-focus-within:grayscale-0 ">
-						<Suspense fallback={null}>
-							<PreviewComponent />
-						</Suspense>
+						<Suspense fallback={null}>{preview}</Suspense>
 					</div>
 				)}
 

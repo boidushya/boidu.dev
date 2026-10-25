@@ -4,6 +4,7 @@ export interface ProjectItem {
 	description: string;
 	link: string;
 	image: string;
+	video?: string;
 	component?: React.ComponentType;
 }
 

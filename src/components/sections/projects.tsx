@@ -24,6 +24,7 @@ const ProjectsSection = () => {
                 link={item.link}
                 image={item.image}
                 size={size}
+                video={item.video}
                 PreviewComponent={item.component}
               />
             );

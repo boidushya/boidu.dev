@@ -6,20 +6,22 @@ import type { ProjectItem } from "./projects";
 const BetterLyrics = lazy(() => import("@/components/projects/better-lyrics"));
 const Blog = lazy(() => import("@/components/projects/blog"));
 const CampSDK = lazy(() => import("@/components/projects/camp-sdk"));
-const CampUIKit = lazy(() => import("@/components/projects/camp-ui-kit"));
-const CreateReefDapp = lazy(() => import("@/components/projects/create-reef-dapp"));
-const DopeUI = lazy(() => import("@/components/projects/dope-ui"));
+const CreateReefDapp = lazy(
+	() => import("@/components/projects/create-reef-dapp"),
+);
 const EIP6963 = lazy(() => import("@/components/projects/eip-6963"));
-const FlowHackathon = lazy(() => import("@/components/projects/flow-hackathon"));
-const PortfolioWebsite = lazy(() => import("@/components/projects/portfolio-website"));
+const FlowHackathon = lazy(
+	() => import("@/components/projects/flow-hackathon"),
+);
+const PortfolioWebsite = lazy(
+	() => import("@/components/projects/portfolio-website"),
+);
 const Rang = lazy(() => import("@/components/projects/rang"));
 const ReefExplorer = lazy(() => import("@/components/projects/reef-explorer"));
 const ReefWallet = lazy(() => import("@/components/projects/reef-wallet"));
 const Rezonance = lazy(() => import("@/components/projects/rezonance"));
 const SquidApp = lazy(() => import("@/components/projects/sqwid-app"));
-const TomJerry = lazy(() => import("@/components/projects/tom-jerry"));
 const Vinyl = lazy(() => import("@/components/projects/vinyl"));
-const WalletConnectDocs = lazy(() => import("@/components/projects/walletconnect-docs"));
 
 export const PROJECT_ITEMS: ProjectItem[] = [
 	{
@@ -30,6 +32,15 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		image:
 			"https://raw.githubusercontent.com/boidushya/better-lyrics/master/images/icons/icon-512.png",
 		component: BetterLyrics,
+	},
+	{
+		id: "composer",
+		title: "Composer",
+		description:
+			"Word-synced lyrics editor for Better Lyrics. Tap along, drag words on a timeline, export TTML.",
+		link: "https://composer.betterlyrics.org",
+		image: "https://composer.betterlyrics.org/logo.svg",
+		video: "/composer.mp4",
 	},
 	{
 		id: "rang",
@@ -64,7 +75,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		link: "https://camp-ui-kit.vercel.app",
 		image:
 			"https://pbs.twimg.com/profile_images/1774932612160557056/QOyzwbO2_400x400.jpg",
-		component: CampUIKit,
+		video: "/cuik.mp4",
 	},
 	{
 		id: "camp-sdk",
@@ -82,7 +93,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"Documentation for WalletConnect SDKs. I was responsible for the 2023 docs refactor.",
 		link: "https://docs.walletconnect.com",
 		image: "https://avatars.githubusercontent.com/u/37784886?s=200&v=4",
-		component: WalletConnectDocs,
+		video: "/wctd.mp4",
 	},
 	{
 		id: "dope-ui",
@@ -90,7 +101,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 		description: "A UI-Kit for creating neo-modern glassmorphic websites",
 		link: "https://dope.boidushya.com",
 		image: "https://dope.boidushya.com/logo-white.svg",
-		component: DopeUI,
+		video: "/dope.mp4",
 	},
 	{
 		id: "sqwid-app",
@@ -134,7 +145,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"A facebook bot that posted Tom and Jerry frames one at a time.",
 		link: "https://www.facebook.com/etjfo/",
 		image: "https://www.facebook.com/images/fb_icon_325x325.png",
-		component: TomJerry,
+		video: "/etjfo.mp4",
 	},
 	{
 		id: "flow-hackathon",
