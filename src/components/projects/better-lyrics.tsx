@@ -7,23 +7,15 @@ import { useEffect, useMemo, useRef } from "react";
 import ttml from "@/assets/lyrics/feels-like-we-only-go-backwards.ttml?raw";
 import KawarpBackground from "@/components/shared/KawarpBackground";
 import { lonerismArt } from "@/utils/music";
+import { showreelTime } from "@/utils/showreel";
 import braccatoTheme from "./braccato-theme.css?raw";
 import "./better-lyrics.css";
 
 const ART_URL = lonerismArt(256);
 
-const LOOP_TAIL_S = 2;
-
 const BetterLyrics = () => {
 	const mountRef = useRef<HTMLDivElement>(null);
-	const { lyrics, durationS } = useMemo(() => {
-		const parsed = parseTTMLContent(ttml);
-		const end = parsed.lyrics.reduce(
-			(max, l) => Math.max(max, l.startTimeMs + l.durationMs),
-			0,
-		);
-		return { lyrics: parsed.lyrics, durationS: end / 1000 + LOOP_TAIL_S };
-	}, []);
+	const lyrics = useMemo(() => parseTTMLContent(ttml).lyrics, []);
 
 	useEffect(() => {
 		const mount = mountRef.current;
@@ -34,15 +26,11 @@ const BetterLyrics = () => {
 		renderer.setLyrics(lyrics);
 
 		let raf = 0;
-		let start = performance.now();
+		let previous = Number.POSITIVE_INFINITY;
 		const loop = (now: number) => {
-			const t = (now - start) / 1000;
-			if (t >= durationS) {
-				start = now;
-				renderer.tick(0, { isPlaying: true, smoothScroll: false });
-			} else {
-				renderer.tick(t, { isPlaying: true });
-			}
+			const t = showreelTime(now);
+			renderer.tick(t, { isPlaying: true, smoothScroll: t >= previous });
+			previous = t;
 			raf = requestAnimationFrame(loop);
 		};
 		raf = requestAnimationFrame(loop);
@@ -51,7 +39,7 @@ const BetterLyrics = () => {
 			cancelAnimationFrame(raf);
 			renderer.destroy();
 		};
-	}, [lyrics, durationS]);
+	}, [lyrics]);
 
 	return (
 		<div className="absolute inset-0 z-0">

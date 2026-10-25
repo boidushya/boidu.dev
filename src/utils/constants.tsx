@@ -5,6 +5,7 @@ import type { ProjectItem } from "./projects";
 // Lazy load all project preview components for better performance
 const BetterLyrics = lazy(() => import("@/components/projects/better-lyrics"));
 const Blog = lazy(() => import("@/components/projects/blog"));
+const Composer = lazy(() => import("@/components/projects/composer"));
 const CampSDK = lazy(() => import("@/components/projects/camp-sdk"));
 const CreateReefDapp = lazy(
 	() => import("@/components/projects/create-reef-dapp"),
@@ -40,7 +41,7 @@ export const PROJECT_ITEMS: ProjectItem[] = [
 			"Word-synced lyrics editor for Better Lyrics. Tap along, drag words on a timeline, export TTML.",
 		link: "https://composer.betterlyrics.org",
 		image: "https://composer.betterlyrics.org/logo.svg",
-		video: "/composer.mp4",
+		component: Composer,
 	},
 	{
 		id: "rang",
