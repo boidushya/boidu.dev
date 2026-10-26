@@ -16,8 +16,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@braccato/core": "^1.16.1",
-    "@braccato/parsers": "^0.3.1",
+    "@braccato/core": "^1.16.13",
+    "@braccato/parsers": "^0.4.0",
     "@kawarp/core": "^1.2.1",
     "@number-flow/react": "^0.5.10",
     "@radix-ui/react-hover-card": "^1.1.15",
