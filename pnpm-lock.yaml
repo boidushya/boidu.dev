@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@braccato/core':
-        specifier: ^1.21.6
-        version: 1.21.6
+        specifier: ^1.22.0
+        version: 1.22.0
       '@braccato/parsers':
         specifier: ^0.4.3
         version: 0.4.3
@@ -257,8 +257,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@braccato/core@1.21.6':
-    resolution: {integrity: sha512-DSR3dQPrseVXmDfbgfyo76d8BzopYcXxWIz9suUyzK5DbU0TdrU5nAxmzWduzGdMkj4qSsTv3jNWRQKhYsZXRg==}
+  '@braccato/core@1.22.0':
+    resolution: {integrity: sha512-az3MnvS+OgHQ9UjkOat1aho09fOQYsYY+uQeZZHzRP2H5kqu6xkgb2v8Bq0BMJ/fLB1wXAxZtslb+diIzLJF7w==}
 
   '@braccato/parsers@0.4.3':
     resolution: {integrity: sha512-pNyIjY5mQiIWCPeQ1EOSBCDI9Fhr90dKYVdzbb7AI16cc81OfqaQY+EtL5+wSgP+VwFpObjFZHr/gIzrTu2kVg==}
@@ -1575,7 +1575,7 @@ snapshots:
   '@biomejs/cli-win32-x64@2.1.4':
     optional: true
 
-  '@braccato/core@1.21.6':
+  '@braccato/core@1.22.0':
     dependencies:
       '@braccato/types': 1.1.0
 
